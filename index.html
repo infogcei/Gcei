@@ -6,7 +6,6 @@
 <title>Guru Computer Education Institute - Admission Form</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* (style same as before, kept concise) */
 :root{--primary-blue:#1a2a6c;--secondary-blue:#2a4d8e;--light-blue:#e8f4ff;--white:#fff;--gray:#f5f7fa;--dark-gray:#444;--success:#0d8b4e;--whatsapp:#25D366;--accent:#d4af37}
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma, Geneva, Verdana, sans-serif}
 body{background:linear-gradient(135deg,var(--primary-blue) 0%,var(--secondary-blue) 100%);color:#333;padding:20px;min-height:100vh;line-height:1.6}
@@ -30,7 +29,6 @@ header{background:linear-gradient(to right,var(--primary-blue),var(--secondary-b
   </div>
 
   <div class="form-container" id="admissionForm">
-    <!-- Student Details -->
     <div class="form-section">
       <div class="section-title"><i class="fas fa-user-graduate"></i> Student Details</div>
       <div class="form-row">
@@ -39,8 +37,8 @@ header{background:linear-gradient(to right,var(--primary-blue),var(--secondary-b
       </div>
 
       <div class="form-row">
-        <div class="form-group"><label for="mobile" class="required">Mobile Number</label><input id="mobile" type="tel" /></div>
-        <div class="form-group"><label for="whatsapp" class="required">WhatsApp Number</label><input id="whatsapp" type="tel" /></div>
+        <div class="form-group"><label for="mobile" class="required">Mobile Number</label><input id="mobile" type="tel" maxlength="10" /></div>
+        <div class="form-group"><label for="whatsapp" class="required">WhatsApp Number</label><input id="whatsapp" type="tel" maxlength="10" /></div>
       </div>
 
       <div class="form-row">
@@ -53,12 +51,11 @@ header{background:linear-gradient(to right,var(--primary-blue),var(--secondary-b
       <div class="form-group"><label for="address" class="required">Address</label><textarea id="address" rows="2"></textarea></div>
 
       <div class="form-row">
-        <div class="form-group"><label for="aadhar" class="required">Aadhar Number</label><input id="aadhar" type="text" /></div>
+        <div class="form-group"><label for="aadhar" class="required">Aadhar Number</label><input id="aadhar" type="text" maxlength="12" /></div>
         <div class="form-group"><label for="email">Email</label><input id="email" type="email" /></div>
       </div>
     </div>
 
-    <!-- Course Details -->
     <div class="form-section">
       <div class="section-title"><i class="fas fa-laptop-code"></i> Course Details</div>
       <div class="form-row">
@@ -94,7 +91,6 @@ header{background:linear-gradient(to right,var(--primary-blue),var(--secondary-b
       </div>
     </div>
 
-    <!-- Documents (user can still attach but attachments not uploaded to sheet by this flow) -->
     <div class="form-section">
       <div class="section-title"><i class="fas fa-file-alt"></i> Required Documents</div>
       <div class="form-row">
@@ -119,10 +115,10 @@ header{background:linear-gradient(to right,var(--primary-blue),var(--secondary-b
 </div>
 
 <script>
-/* === SET YOUR DEPLOYED APPS SCRIPT URL HERE === */
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydjb6_q7wd_Q7WO7MTeJJrMc5jMB9ZSie836L9gdxR3C-W9mT3PLiFhpyJTCmulfp-/exec';
+/* ==== Paste your deployed Apps Script web app URL here (must end with /exec) ==== */
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzmGNO5OJeDGWdOXqUfD77KaP3_E4PmYIE3EJFXw9x2uMI8ubvZHU5TrzG3HzZyPal1/exec';
 
-/* helper functions */
+/* helpers */
 function validateForm() {
   const required = ['fullName','mobile','whatsapp','course','batchTime','address','aadhar','gender'];
   for (let id of required) {
@@ -133,13 +129,11 @@ function validateForm() {
   if (!/^\d{10}$/.test(document.getElementById('whatsapp').value)) { alert('कृपया 10 अंकों का WhatsApp नंबर दर्ज करें'); return false; }
   return true;
 }
-
 function generateStudentId() {
-  const prefix = 'GCEI'; const year = new Date().getFullYear();
-  return `${prefix}-${year}-${Math.floor(1000+Math.random()*9000)}`;
+  return 'GCEI-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random()*9000);
 }
 
-/* main submit: send as application/x-www-form-urlencoded (no CORS preflight) */
+/* submit as application/x-www-form-urlencoded to avoid preflight */
 async function submitToGoogleSheetsWithFiles() {
   if (!validateForm()) return;
 
@@ -168,32 +162,44 @@ async function submitToGoogleSheetsWithFiles() {
       body: params.toString()
     });
 
-    // Apps Script returns JSON string — try parse
+    if (!resp.ok) {
+      const txt = await resp.text();
+      throw new Error('Server returned ' + resp.status + ' — ' + txt);
+    }
+
     const text = await resp.text();
     let result = {};
-    try { result = JSON.parse(text); } catch(e) { result = { status: 'ok' }; }
+    try { result = JSON.parse(text); } catch (e) { result = { status: 'ok' }; }
 
-    if (result.status && (result.status === 'success' || result.status === 'ok')) {
+    if (result.status === 'success' || result.status === 'ok') {
       document.getElementById('admissionForm').style.display = 'none';
       document.getElementById('successMessage').style.display = 'block';
-      document.getElementById('studentIdDisplay').textContent = `Your Student ID: ${studentId}`;
-      document.getElementById('successStudentName').textContent = `धन्यवाद, ${document.getElementById('fullName').value}! आपका फॉर्म जमा हो गया है।`;
+      document.getElementById('studentIdDisplay').textContent = 'Your Student ID: ' + studentId;
+      document.getElementById('successStudentName').textContent = 'धन्यवाद, ' + document.getElementById('fullName').value + '! आपका फॉर्म जमा हो गया है।';
     } else {
       alert('Submission failed: ' + (result.message || text || 'Unknown'));
     }
   } catch (err) {
-    alert('Submission error: ' + err.toString());
+    alert('Submission error: ' + err.message);
+    console.error(err);
   } finally {
     document.getElementById('loadingSpinner').style.display = 'none';
     document.getElementById('submitBtn').disabled = false;
   }
 }
 
-/* bind click */
-document.getElementById('submitBtn').addEventListener('click', async function(e){
+/* bind */
+document.getElementById('submitBtn').addEventListener('click', function(e){
   e.preventDefault();
-  await submitToGoogleSheetsWithFiles();
+  submitToGoogleSheetsWithFiles();
 });
+
+/* DOB max (min age 10) */
+(function setDobMax(){
+  const dob = document.getElementById('dob');
+  const today = new Date();
+  dob.max = new Date(today.getFullYear()-10, today.getMonth(), today.getDate()).toISOString().split('T')[0];
+})();
 </script>
 </body>
 </html>
