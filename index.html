@@ -148,19 +148,6 @@
             border-color: var(--secondary-blue);
         }
 
-        .file-preview {
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .file-preview img {
-            max-width: 150px;
-            max-height: 150px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            object-fit: contain;
-        }
-
         .submit-btn {
             display: block;
             width: 100%;
@@ -706,9 +693,6 @@
                     reader.onload = function(e) {
                         const img = document.createElement('img');
                         img.src = e.target.result;
-                        // Set maximum dimensions for the preview image
-                        img.style.maxWidth = '150px';
-                        img.style.maxHeight = '150px';
                         preview.appendChild(img);
                     }
                     reader.readAsDataURL(file);
