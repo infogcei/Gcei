@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guru Computer Education Institute - Admission Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- PDF Libraries -->
+    <!-- PDF Library -->
     <script src="https://script.google.com/macros/s/AKfycbwc_wJriuSUkTmuj4zCGjjkCLERUSxsYmg9O0cl0xkoWazsnMYz8ZssnFe8c7q5Qhl9/exec"></script>
     <style>
         :root {
@@ -18,7 +18,6 @@
             --success: #0d8b4e;
             --whatsapp: #25D366;
             --accent: #d4af37;
-            --error: #dc2626;
         }
         
         * {
@@ -280,12 +279,6 @@
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
-        .action-btn:disabled {
-            background: #9ca3af !important;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
         .download-btn {
             background: var(--secondary-blue);
             color: white;
@@ -326,16 +319,6 @@
             padding: 20px;
             margin: 20px 0;
             text-align: left;
-        }
-
-        .error-message {
-            background: #fee2e2;
-            color: var(--error);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border: 1px solid #fecaca;
-            display: none;
         }
 
         .next-steps h3 {
@@ -608,12 +591,6 @@
                 Your Student ID: Loading...
             </div>
 
-            <!-- Error Message -->
-            <div class="error-message" id="errorMessage">
-                <i class="fas fa-exclamation-triangle"></i>
-                <strong>PDF library load nahi hui hai.</strong> Kripya page refresh karen ya text format mein download karein.
-            </div>
-
             <div class="student-info">
                 <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 15px;">Student Information</h3>
                 <div class="info-row">
@@ -652,11 +629,11 @@
                 <button class="action-btn download-btn" id="downloadPdfBtn">
                     <i class="fas fa-file-pdf"></i> Download PDF
                 </button>
-                <button class="action-btn download-btn" id="downloadTextBtn">
-                    <i class="fas fa-file-text"></i> Download Text
-                </button>
                 <button class="action-btn whatsapp-btn" id="whatsappBtn">
                     <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                </button>
+                <button class="action-btn new-form-btn" id="newFormBtn">
+                    <i class="fas fa-plus"></i> New Admission Form
                 </button>
             </div>
 
@@ -669,15 +646,6 @@
     </div>
 
     <script>
-        // PDF Library Error Handling
-        window.pdfLoadError = false;
-        window.addEventListener('error', function(e) {
-            if (e.target.src && e.target.src.includes('jspdf')) {
-                window.pdfLoadError = true;
-                console.log('PDF library load failed');
-            }
-        }, true);
-
         // Google Script URL
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweVZOj9OatagezkfwaTqLMFR23iPwwqIPw880KfSOENGlUI-aJj5Mn58thRlxRjZyGPg/exec';
 
@@ -863,14 +831,19 @@
             document.getElementById('successMobile').textContent = formData.mobile;
             document.getElementById('submissionDate').textContent = formData.timestamp;
             
-            // Initialize PDF library check
-            setTimeout(checkPdfLibrary, 1000);
-            
             // Reset loading state
             resetLoadingState();
             
             // Scroll to top
             window.scrollTo(0, 0);
+            
+            // Add visual effects
+            setTimeout(() => {
+                document.querySelector('.success-icon').style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    document.querySelector('.success-icon').style.transform = 'scale(1)';
+                }, 300);
+            }, 1000);
         }
 
         function resetLoadingState() {
@@ -896,186 +869,123 @@
             };
         }
 
-        // PDF Library Check
-        function checkPdfLibrary() {
-            if (typeof window.jspdf === 'undefined' || window.pdfLoadError) {
-                document.getElementById('errorMessage').style.display = 'block';
-                document.getElementById('downloadPdfBtn').disabled = true;
-                document.getElementById('downloadPdfBtn').innerHTML = '<i class="fas fa-exclamation-triangle"></i> PDF Not Available';
-                return false;
-            }
-            return true;
-        }
-
-        // PDF Download Function
+        // PDF Download Function with Professional Format
         document.getElementById('downloadPdfBtn').addEventListener('click', function() {
-            if (!checkPdfLibrary()) {
-                alert('PDF library load nahi hui hai. Kripya page refresh karen ya text format mein download karein.');
-                return;
-            }
-
-            try {
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-                
-                const formData = getFormData();
-                const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
-                
-                // Set professional fonts
-                doc.setFont("helvetica");
-                
-                // Header Section
-                doc.setFontSize(20);
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(26, 42, 108);
-                doc.text('Guru Computer Education Institute', 105, 20, { align: 'center' });
-                
-                doc.setFontSize(12);
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(100, 100, 100);
-                doc.text('Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)', 105, 28, { align: 'center' });
-                
-                doc.setFontSize(12);
-                doc.text('Phone: 9244240484', 105, 34, { align: 'center' });
-                
-                // Admission Form Title
-                doc.setFontSize(16);
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(0, 0, 0);
-                doc.text('ADMISSION FORM', 105, 45, { align: 'center' });
-                
-                // Submission Date
-                doc.setFontSize(10);
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(100, 100, 100);
-                doc.text('Submitted on: ' + new Date().toLocaleString(), 105, 52, { align: 'center' });
-                
-                let yPosition = 65;
-                
-                // Student Details Section
-                doc.setFontSize(12);
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(26, 42, 108);
-                doc.text('STUDENT DETAILS', 20, yPosition);
-                
-                yPosition += 10;
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(0, 0, 0);
-                doc.text(`Full Name: ${formData.fullName}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Father/Guardian Name: ${formData.fatherName}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Mobile Number: ${formData.mobile}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`WhatsApp Number: ${formData.whatsapp}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Gender: ${formData.gender}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Date of Birth: ${formData.dob}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Address: ${formData.address}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Aadhar Number: ${formData.aadhar}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Email: ${formData.email}`, 25, yPosition);
-                
-                yPosition += 15;
-                
-                // Course Details Section
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(26, 42, 108);
-                doc.text('COURSE DETAILS', 20, yPosition);
-                
-                yPosition += 10;
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(0, 0, 0);
-                doc.text(`Selected Course: ${formData.course}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Preferred Batch Time: ${formData.batchTime}`, 25, yPosition);
-                
-                yPosition += 15;
-                
-                // Declaration Section
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(26, 42, 108);
-                doc.text('DECLARATION', 20, yPosition);
-                
-                yPosition += 10;
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(0, 0, 0);
-                const declarationText = `I hereby declare that all the information provided above is true to the best of my knowledge. I agree to follow all rules and regulations of the institute and understand that the admission will be confirmed only after verification by the institute authorities.`;
-                
-                const splitDeclaration = doc.splitTextToSize(declarationText, 170);
-                doc.text(splitDeclaration, 25, yPosition);
-                
-                yPosition += (splitDeclaration.length * 5) + 15;
-                
-                // Signature Section
-                doc.text('Student Signature: _____', 25, yPosition);
-                yPosition += 7;
-                doc.text('Date: _____', 25, yPosition);
-                yPosition += 10;
-                doc.text('Parent/Guardian Signature: _____', 25, yPosition);
-                yPosition += 7;
-                doc.text('Date: _____', 25, yPosition);
-                
-                // Footer
-                yPosition += 20;
-                doc.setFontSize(8);
-                doc.setTextColor(150, 150, 150);
-                doc.text('This is a computer generated admission form. For any queries, contact: 9244240484', 105, yPosition, { align: 'center' });
-                
-                // Save PDF
-                doc.save(`Admission_Form_${studentId}.pdf`);
-                
-            } catch (error) {
-                console.error('PDF generation error:', error);
-                alert('PDF generate karne mein error aaya. Kripya text format mein download karein.');
-            }
-        });
-
-        // Text Download Function
-        document.getElementById('downloadTextBtn').addEventListener('click', function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
             const formData = getFormData();
             const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
             
-            let content = `GURU COMPUTER EDUCATION INSTITUTE\n`;
-            content += `Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)\n`;
-            content += `Phone: 9244240484\n\n`;
-            content += `ADMISSION FORM\n\n`;
-            content += `Submitted on: ${new Date().toLocaleString()}\n\n`;
-            content += `STUDENT DETAILS\n`;
-            content += `Full Name: ${formData.fullName}\n`;
-            content += `Father/Guardian Name: ${formData.fatherName}\n`;
-            content += `Mobile Number: ${formData.mobile}\n`;
-            content += `WhatsApp Number: ${formData.whatsapp}\n`;
-            content += `Gender: ${formData.gender}\n`;
-            content += `Date of Birth: ${formData.dob}\n`;
-            content += `Address: ${formData.address}\n`;
-            content += `Aadhar Number: ${formData.aadhar}\n`;
-            content += `Email: ${formData.email}\n\n`;
-            content += `COURSE DETAILS\n`;
-            content += `Selected Course: ${formData.course}\n`;
-            content += `Preferred Batch Time: ${formData.batchTime}\n\n`;
-            content += `DECLARATION\n`;
-            content += `I hereby declare that all the information provided above is true to the best of my knowledge. I agree to follow all rules and regulations of the institute and understand that the admission will be confirmed only after verification by the institute authorities.\n\n`;
-            content += `Student Signature: _____\n`;
-            content += `Date: _____\n\n`;
-            content += `Parent/Guardian Signature: _____\n`;
-            content += `Date: _____\n\n`;
-            content += `Student ID: ${studentId}\n`;
-
-            const blob = new Blob([content], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Admission_Form_${studentId}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            // Set professional fonts
+            doc.setFont("helvetica");
             
-            alert('Text file downloaded successfully!');
+            // Header Section
+            doc.setFontSize(20);
+            doc.setFont(undefined, 'bold');
+            doc.setTextColor(26, 42, 108);
+            doc.text('Guru Computer Education Institute', 105, 20, { align: 'center' });
+            
+            doc.setFontSize(12);
+            doc.setFont(undefined, 'normal');
+            doc.setTextColor(100, 100, 100);
+            doc.text('Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)', 105, 28, { align: 'center' });
+            
+            doc.setFontSize(12);
+            doc.text('Phone: 9244240484', 105, 34, { align: 'center' });
+            
+            // Admission Form Title
+            doc.setFontSize(16);
+            doc.setFont(undefined, 'bold');
+            doc.setTextColor(0, 0, 0);
+            doc.text('ADMISSION FORM', 105, 45, { align: 'center' });
+            
+            // Submission Date
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            doc.setTextColor(100, 100, 100);
+            doc.text('Submitted on: ' + new Date().toLocaleString(), 105, 52, { align: 'center' });
+            
+            let yPosition = 65;
+            
+            // Student Details Section
+            doc.setFontSize(12);
+            doc.setFont(undefined, 'bold');
+            doc.setTextColor(26, 42, 108);
+            doc.text('STUDENT DETAILS', 20, yPosition);
+            
+            yPosition += 10;
+            doc.setFont(undefined, 'normal');
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Full Name: ${formData.fullName}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`Father/Guardian Name: ${formData.fatherName}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`Mobile Number: ${formData.mobile}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`WhatsApp Number: ${formData.whatsapp}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`Gender: ${formData.gender}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`Date of Birth: ${formData.dob}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`Address: ${formData.address}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`Aadhar Number: ${formData.aadhar}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`Email: ${formData.email}`, 25, yPosition);
+            
+            yPosition += 15;
+            
+            // Course Details Section
+            doc.setFont(undefined, 'bold');
+            doc.setTextColor(26, 42, 108);
+            doc.text('COURSE DETAILS', 20, yPosition);
+            
+            yPosition += 10;
+            doc.setFont(undefined, 'normal');
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Selected Course: ${formData.course}`, 25, yPosition);
+            yPosition += 7;
+            doc.text(`Preferred Batch Time: ${formData.batchTime}`, 25, yPosition);
+            
+            yPosition += 15;
+            
+            // Declaration Section
+            doc.setFont(undefined, 'bold');
+            doc.setTextColor(26, 42, 108);
+            doc.text('DECLARATION', 20, yPosition);
+            
+            yPosition += 10;
+            doc.setFont(undefined, 'normal');
+            doc.setTextColor(0, 0, 0);
+            const declarationText = `I hereby declare that all the information provided above is true to the best of my knowledge. I agree to follow all rules and regulations of the institute and understand that the admission will be confirmed only after verification by the institute authorities.`;
+            
+            const splitDeclaration = doc.splitTextToSize(declarationText, 170);
+            doc.text(splitDeclaration, 25, yPosition);
+            
+            yPosition += (splitDeclaration.length * 5) + 15;
+            
+            // Signature Section
+            doc.text('Student Signature: _____', 25, yPosition);
+            yPosition += 7;
+            doc.text('Date: _____', 25, yPosition);
+            yPosition += 10;
+            doc.text('Parent/Guardian Signature: _____', 25, yPosition);
+            yPosition += 7;
+            doc.text('Date: _____', 25, yPosition);
+            
+            // Footer
+            yPosition += 20;
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('This is a computer generated admission form. For any queries, contact: 9244240484', 105, yPosition, { align: 'center' });
+            
+            // Save PDF
+            doc.save(`Admission_Form_${studentId}.pdf`);
+            
+            // Show success message
+            alert('Professional Admission Form PDF downloaded successfully!');
         });
 
         // WhatsApp button functionality
@@ -1087,6 +997,14 @@
             window.open(whatsappUrl, '_blank');
         });
 
+        // New Form button functionality
+        document.getElementById('newFormBtn').addEventListener('click', function() {
+            if(confirm('क्या आप एक नया एडमिशन फॉर्म भरना चाहते हैं?')) {
+                // Reload the page to show form again
+                location.reload();
+            }
+        });
+
         // Set maximum date for DOB (minimum age 10 years)
         const dobInput = document.getElementById('dob');
         const today = new Date();
@@ -1095,4 +1013,3 @@
     </script>
 </body>
 </html>
-
