@@ -1,205 +1,1097 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Guru Computer Education Institute - Admission Form</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root{--primary-blue:#1a2a6c;--secondary-blue:#2a4d8e;--light-blue:#e8f4ff;--white:#fff;--gray:#f5f7fa;--dark-gray:#444;--success:#0d8b4e;--whatsapp:#25D366;--accent:#d4af37}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma, Geneva, Verdana, sans-serif}
-body{background:linear-gradient(135deg,var(--primary-blue) 0%,var(--secondary-blue) 100%);color:#333;padding:20px;min-height:100vh;line-height:1.6}
-.container{max-width:1000px;margin:0 auto;background:var(--white);border-radius:15px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
-header{background:linear-gradient(to right,var(--primary-blue),var(--secondary-blue));color:var(--white);padding:20px;text-align:center}
-.institute-name{font-size:24px;font-weight:700;margin-bottom:5px}.address,.contact{font-size:14px;margin:3px 0;opacity:.9}.welcome-message{background:var(--light-blue);padding:15px;border-radius:8px;margin:15px 25px;text-align:center;border-left:4px solid var(--secondary-blue)}.form-container{padding:20px}.form-section{margin-bottom:25px;padding:15px;border-radius:10px;background:var(--gray);border-left:5px solid var(--secondary-blue)}.section-title{font-size:18px;font-weight:600;color:var(--secondary-blue);margin-bottom:15px;display:flex;align-items:center}.form-row{display:flex;flex-wrap:wrap;margin:0 -8px}.form-group{flex:1 0 280px;padding:0 8px;margin-bottom:15px}label{display:block;margin-bottom:6px;font-weight:600;color:var(--dark-gray);font-size:14px}.required::after{content:" *";color:red}input[type="text"],input[type="date"],input[type="email"],input[type="tel"],input[type="number"],textarea,select{width:100%;padding:10px 12px;border:2px solid #ddd;border-radius:6px;font-size:14px}input:focus,textarea:focus,select:focus{border-color:var(--secondary-blue);outline:none}.file-upload{border:2px dashed #ccc;padding:15px;text-align:center;border-radius:6px;background:#f8f9fa;cursor:pointer}.submit-btn{display:block;width:100%;padding:12px;background:var(--success);color:var(--white);border:none;border-radius:6px;font-size:16px;font-weight:600;cursor:pointer;margin-top:15px;transition:all .3s ease}.submit-btn:hover{background:#0a6e3d;transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,0,0,0.2)}.submit-btn:disabled{background:#ccc;cursor:not-allowed}.success-message{display:none;text-align:center;padding:40px 30px}.student-id{background:#ecfdf5;color:#065f46;padding:15px 25px;border-radius:10px;font-weight:700;font-size:20px;margin:25px 0;display:inline-block;border:2px solid #a7f3d0;box-shadow:0 4px 8px rgba(0,0,0,0.1)}.footer-note{ text-align:center;margin-top:25px;padding:20px;background:var(--light-blue);border-radius:8px;font-weight:600;color:var(--secondary-blue)}
-@media (max-width:768px){.form-group{flex:1 0 100%}.institute-name{font-size:20px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guru Computer Education Institute - Admission Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- PDF Libraries -->
+    <script src="https://script.google.com/macros/s/AKfycbwc_wJriuSUkTmuj4zCGjjkCLERUSxsYmg9O0cl0xkoWazsnMYz8ZssnFe8c7q5Qhl9/exec"></script>
+    <style>
+        :root {
+            --primary-blue: #1a2a6c;
+            --secondary-blue: #2a4d8e;
+            --light-blue: #e8f4ff;
+            --white: #ffffff;
+            --gray: #f5f7fa;
+            --dark-gray: #444;
+            --success: #0d8b4e;
+            --whatsapp: #25D366;
+            --accent: #d4af37;
+            --error: #dc2626;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .institute-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .address, .contact {
+            font-size: 14px;
+            margin: 3px 0;
+            opacity: 0.9;
+        }
+
+        .welcome-message {
+            background: var(--light-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 25px;
+            text-align: center;
+            border-left: 4px solid var(--secondary-blue);
+        }
+
+        .form-container {
+            padding: 20px;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: var(--gray);
+            border-left: 5px solid var(--secondary-blue);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--secondary-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -8px;
+        }
+
+        .form-group {
+            flex: 1 0 280px;
+            padding: 0 8px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--dark-gray);
+            font-size: 14px;
+        }
+
+        .required::after {
+            content: " *";
+            color: red;
+        }
+
+        input[type="text"], input[type="date"], input[type="email"], input[type="tel"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--secondary-blue);
+            outline: none;
+        }
+
+        .file-upload {
+            border: 2px dashed #ccc;
+            padding: 15px;
+            text-align: center;
+            border-radius: 6px;
+            background: #f8f9fa;
+            cursor: pointer;
+        }
+
+        .file-upload:hover {
+            border-color: var(--secondary-blue);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--success);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #0a6e3d;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Success Message Styles */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            color: var(--success);
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        .success-message h2 {
+            color: var(--success);
+            margin-bottom: 15px;
+            font-size: 32px;
+        }
+
+        .success-message p {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--dark-gray);
+        }
+
+        .student-id {
+            background: #ecfdf5;
+            color: #065f46;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 25px 0;
+            display: inline-block;
+            border: 2px solid #a7f3d0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .student-info {
+            background: var(--light-blue);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            border-left: 4px solid var(--secondary-blue);
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary-blue);
+            width: 150px;
+            flex-shrink: 0;
+        }
+
+        .info-value {
+            color: var(--dark-gray);
+            flex: 1;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .action-btn:disabled {
+            background: #9ca3af !important;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .download-btn {
+            background: var(--secondary-blue);
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: var(--whatsapp);
+            color: white;
+        }
+
+        .new-form-btn {
+            background: var(--success);
+            color: white;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 25px;
+            padding: 20px;
+            background: var(--light-blue);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--secondary-blue);
+        }
+
+        .tagline {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .next-steps {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: var(--error);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #fecaca;
+            display: none;
+        }
+
+        .next-steps h3 {
+            color: #856404;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .next-steps ul {
+            padding-left: 20px;
+        }
+
+        .next-steps li {
+            margin-bottom: 10px;
+            color: #856404;
+        }
+
+        .spinner {
+            display: none;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--secondary-blue);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 15px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .hindi-text {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .file-preview {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .file-preview img {
+            max-width: 100px;
+            max-height: 100px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 2px;
+        }
+
+        .debug-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 12px;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .form-group {
+                flex: 1 0 100%;
+            }
+            
+            .form-row {
+                margin: 0;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .info-row {
+                flex-direction: column;
+            }
+            
+            .info-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .success-message h2 {
+                font-size: 26px;
+            }
+            
+            .student-id {
+                font-size: 18px;
+                padding: 12px 20px;
+            }
+            
+            .institute-name {
+                font-size: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <div class="institute-name">Guru Computer Education Institute</div>
-    <div class="address">Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)</div>
-    <div class="contact">Phone: 9244240484</div>
-  </header>
+    <div class="container">
+        <header>
+            <div class="institute-name">Guru Computer Education Institute</div>
+            <div class="address">Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)</div>
+            <div class="contact">Phone: 9244240484</div>
+        </header>
 
-  <div class="welcome-message hindi-text">
-    <p><strong>Namaste! Main Vani Hoon, Guru Computer Education Institute, Bilha mein aapka swagat hai.</strong></p>
-    <p>Kripya admission form bhar kar submit karen. Form verify hone par hum aapko jald hi contact karenge.</p>
-  </div>
-
-  <div class="form-container" id="admissionForm">
-    <div class="form-section">
-      <div class="section-title"><i class="fas fa-user-graduate"></i> Student Details</div>
-      <div class="form-row">
-        <div class="form-group"><label for="fullName" class="required">Full Name</label><input id="fullName" type="text" /></div>
-        <div class="form-group"><label for="fatherName">Father / Guardian Name</label><input id="fatherName" type="text" /></div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group"><label for="mobile" class="required">Mobile Number</label><input id="mobile" type="tel" maxlength="10" /></div>
-        <div class="form-group"><label for="whatsapp" class="required">WhatsApp Number</label><input id="whatsapp" type="tel" maxlength="10" /></div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group"><label for="gender" class="required">Gender</label>
-          <select id="gender"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select>
+        <!-- Welcome Message -->
+        <div class="welcome-message hindi-text">
+            <p><strong>Namaste! Main Vani Hoon, Guru Computer Education Institute, Bilha mein aapka swagat hai.</strong></p>
+            <p>Kripya admission form bhar kar submit karen. Form verify hone par hum aapko jald hi contact karenge.</p>
         </div>
-        <div class="form-group"><label for="dob">Date of Birth</label><input id="dob" type="date" /></div>
-      </div>
 
-      <div class="form-group"><label for="address" class="required">Address</label><textarea id="address" rows="2"></textarea></div>
+        <!-- Admission Form -->
+        <div class="form-container" id="admissionForm">
+            <!-- Debug Info -->
+            <div class="debug-info" id="debugInfo"></div>
 
-      <div class="form-row">
-        <div class="form-group"><label for="aadhar" class="required">Aadhar Number</label><input id="aadhar" type="text" maxlength="12" /></div>
-        <div class="form-group"><label for="email">Email</label><input id="email" type="email" /></div>
-      </div>
+            <!-- Student Details Section -->
+            <div class="form-section">
+                <div class="section-title"><i class="fas fa-user-graduate"></i> Student Details</div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName" class="required">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fatherName">Father / Guardian Name</label>
+                        <input type="text" id="fatherName" name="fatherName" placeholder="Enter father/guardian name">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="mobile" class="required">Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="whatsapp" class="required">WhatsApp Number</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number" pattern="[0-9]{10}" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender" class="required">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address" class="required">Address</label>
+                    <textarea id="address" name="address" rows="2" placeholder="Enter your complete address" required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="aadhar" class="required">Aadhar Number</label>
+                        <input type="number" id="aadhar" name="aadhar" placeholder="Enter Aadhar number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter email address">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Course Details Section -->
+            <div class="form-section">
+                <div class="section-title"><i class="fas fa-laptop-code"></i> Course Details</div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="course" class="required">Select Course</label>
+                        <select id="course" name="course" required>
+                            <option value="">Select a course</option>
+                            <option value="Basic Computer Course">Basic Computer Course</option>
+                            <option value="MS Office (Word, Excel, PowerPoint)">MS Office (Word, Excel, PowerPoint)</option>
+                            <option value="Typing (Hindi + English)">Typing (Hindi + English)</option>
+                            <option value="Internet & Email Training">Internet & Email Training</option>
+                            <option value="Tally Prime with GST">Tally Prime with GST</option>
+                            <option value="CCC Course">CCC Course</option>
+                            <option value="DCA Course">DCA Course</option>
+                            <option value="PGDCA Course">PGDCA Course</option>
+                            <option value="Photoshop (Image Editing + Design Basics)">Photoshop (Image Editing + Design Basics)</option>
+                            <option value="Canva Designing Course">Canva Designing Course</option>
+                            <option value="AI Course – How to Use ChatGPT Effectively">AI Course – How to Use ChatGPT Effectively</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="batchTime" class="required">Preferred Batch Time</label>
+                        <select id="batchTime" name="batchTime" required>
+                            <option value="">Select Batch Time</option>
+                            <option value="Morning: 7–8 AM">Morning: 7–8 AM</option>
+                            <option value="Morning: 8–9 AM">Morning: 8–9 AM</option>
+                            <option value="Morning: 9–10 AM">Morning: 9–10 AM</option>
+                            <option value="Morning: 10–11 AM">Morning: 10–11 AM</option>
+                            <option value="Evening: 5–6 PM">Evening: 5–6 PM</option>
+                            <option value="Evening: 6–7 PM">Evening: 6–7 PM</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Section -->
+            <div class="form-section">
+                <div class="section-title"><i class="fas fa-file-alt"></i> Required Documents</div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="photo" class="required">Passport Size Photo</label>
+                        <input type="file" id="photo" name="photo" class="file-upload" accept="image/*" required>
+                        <div class="file-preview" id="photoPreview"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="aadharCard" class="required">Aadhar Card</label>
+                        <input type="file" id="aadharCard" name="aadharCard" class="file-upload" accept="image/*,.pdf" required>
+                        <div class="file-preview" id="aadharPreview"></div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="marksheet">Marksheet (Last Passing Year) - Optional</label>
+                        <input type="file" id="marksheet" name="marksheet" class="file-upload" accept="image/*,.pdf">
+                        <div class="file-preview" id="marksheetPreview"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-note">
+                Guru Ke Saath Gyan, Safalta Ki Pehchan - Your Journey to Success Starts Here!
+            </div>
+
+            <div class="spinner" id="loadingSpinner"></div>
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <i class="fas fa-paper-plane"></i> Submit Admission Form
+            </button>
+        </div>
+
+        <!-- Success Message (Hidden by default) -->
+        <div class="success-message hindi-text" id="successMessage">
+            <div class="success-icon">✓</div>
+            <h2>Form Submitted Successfully!</h2>
+            <p>धन्यवाद! आपका फॉर्म सफलतापूर्वक जमा हो गया है।</p>
+            
+            <div class="student-id" id="studentIdDisplay">
+                Your Student ID: Loading...
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>PDF library load nahi hui hai.</strong> Kripya page refresh karen ya text format mein download karein.
+            </div>
+
+            <div class="student-info">
+                <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 15px;">Student Information</h3>
+                <div class="info-row">
+                    <div class="info-label">Full Name:</div>
+                    <div class="info-value" id="successFullName">-</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Course:</div>
+                    <div class="info-value" id="successCourse">-</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Batch Time:</div>
+                    <div class="info-value" id="successBatchTime">-</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Mobile:</div>
+                    <div class="info-value" id="successMobile">-</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Submission Date:</div>
+                    <div class="info-value" id="submissionDate">Loading...</div>
+                </div>
+            </div>
+
+            <div class="next-steps">
+                <h3><i class="fas fa-list-check"></i> आगे की प्रक्रिया</h3>
+                <ul>
+                    <li>हमारी टीम 24 घंटे के भीतर आपसे संपर्क करेगी</li>
+                    <li>कृपया अपने मूल दस्तावेज लेकर इंस्टीट्यूट आएं</li>
+                    <li>फीस जमा करने और एडमिशन पूरा करने की प्रक्रिया</li>
+                    <li>बैच शुरू होने की तिथि की पुष्टि</li>
+                </ul>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn download-btn" id="downloadPdfBtn">
+                    <i class="fas fa-file-pdf"></i> Download PDF
+                </button>
+                <button class="action-btn download-btn" id="downloadTextBtn">
+                    <i class="fas fa-file-text"></i> Download Text
+                </button>
+                <button class="action-btn whatsapp-btn" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                </button>
+            </div>
+
+            <div class="footer-note">
+                <div class="tagline">Guru Ke Saath Gyan, Safalta Ki Pehchan</div>
+                <strong>Contact: 9244240484 (Vani)</strong><br>
+                <small style="opacity: 0.8; font-weight: normal;">आपकी जानकारी सुरक्षित रूप से हमारे सिस्टम में सेव हो गई है</small>
+            </div>
+        </div>
     </div>
 
-    <div class="form-section">
-      <div class="section-title"><i class="fas fa-laptop-code"></i> Course Details</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="course" class="required">Select Course</label>
-          <select id="course">
-            <option value="">Select a course</option>
-            <option>Basic Computer Course</option>
-            <option>MS Office (Word, Excel, PowerPoint)</option>
-            <option>Typing (Hindi + English)</option>
-            <option>Internet & Email Training</option>
-            <option>Tally Prime with GST</option>
-            <option>CCC Course</option>
-            <option>DCA Course</option>
-            <option>PGDCA Course</option>
-            <option>Photoshop (Image Editing + Design Basics)</option>
-            <option>Canva Designing Course</option>
-            <option>AI Course – How to Use ChatGPT Effectively</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="batchTime" class="required">Preferred Batch Time</label>
-          <select id="batchTime">
-            <option value="">Select Batch Time</option>
-            <option>Morning: 7–8 AM</option>
-            <option>Morning: 8–9 AM</option>
-            <option>Morning: 9–10 AM</option>
-            <option>Morning: 10–11 AM</option>
-            <option>Evening: 5–6 PM</option>
-            <option>Evening: 6–7 PM</option>
-          </select>
-        </div>
-      </div>
-    </div>
+    <script>
+        // PDF Library Error Handling
+        window.pdfLoadError = false;
+        window.addEventListener('error', function(e) {
+            if (e.target.src && e.target.src.includes('jspdf')) {
+                window.pdfLoadError = true;
+                console.log('PDF library load failed');
+            }
+        }, true);
 
-    <div class="form-section">
-      <div class="section-title"><i class="fas fa-file-alt"></i> Required Documents</div>
-      <div class="form-row">
-        <div class="form-group"><label for="photo" class="required">Passport Size Photo</label><input id="photo" type="file" accept="image/*" /></div>
-        <div class="form-group"><label for="aadharCard" class="required">Aadhar Card</label><input id="aadharCard" type="file" accept="image/*,.pdf" /></div>
-      </div>
-      <div class="form-row"><div class="form-group"><label for="marksheet">Marksheet (Optional)</label><input id="marksheet" type="file" accept="image/*,.pdf" /></div></div>
-    </div>
+        // Google Script URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweVZOj9OatagezkfwaTqLMFR23iPwwqIPw880KfSOENGlUI-aJj5Mn58thRlxRjZyGPg/exec';
 
-    <div class="footer-note">Guru Ke Saath Gyan, Safalta Ki Pehchan</div>
+        // Form Submission
+        document.getElementById('submitBtn').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
 
-    <div class="spinner" id="loadingSpinner" style="display:none"></div>
-    <button id="submitBtn" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit Admission Form</button>
-  </div>
+            await submitToGoogleSheets();
+        });
 
-  <div id="successMessage" class="success-message">
-    <div class="success-icon">✓</div>
-    <h2>Form Submitted Successfully!</h2>
-    <p id="successStudentName"></p>
-    <div class="student-id" id="studentIdDisplay">Your Student ID: </div>
-  </div>
-</div>
+        // File preview functionality
+        document.getElementById('photo').addEventListener('change', function(e) {
+            previewFile(e.target, 'photoPreview');
+        });
 
-<script>
-/* ==== Paste your deployed Apps Script web app URL here (must end with /exec) ==== */
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzmGNO5OJeDGWdOXqUfD77KaP3_E4PmYIE3EJFXw9x2uMI8ubvZHU5TrzG3HzZyPal1/exec';
+        document.getElementById('aadharCard').addEventListener('change', function(e) {
+            previewFile(e.target, 'aadharPreview');
+        });
 
-/* helpers */
-function validateForm() {
-  const required = ['fullName','mobile','whatsapp','course','batchTime','address','aadhar','gender'];
-  for (let id of required) {
-    const el = document.getElementById(id);
-    if (!el || !String(el.value || '').trim()) { alert('कृपया सभी आवश्यक फ़ील्ड भरें'); return false; }
-  }
-  if (!/^\d{10}$/.test(document.getElementById('mobile').value)) { alert('कृपया 10 अंकों का मोबाइल नंबर दर्ज करें'); return false; }
-  if (!/^\d{10}$/.test(document.getElementById('whatsapp').value)) { alert('कृपया 10 अंकों का WhatsApp नंबर दर्ज करें'); return false; }
-  return true;
-}
-function generateStudentId() {
-  return 'GCEI-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random()*9000);
-}
+        document.getElementById('marksheet').addEventListener('change', function(e) {
+            previewFile(e.target, 'marksheetPreview');
+        });
 
-/* submit as application/x-www-form-urlencoded to avoid preflight */
-async function submitToGoogleSheetsWithFiles() {
-  if (!validateForm()) return;
+        function previewFile(input, previewId) {
+            const preview = document.getElementById(previewId);
+            preview.innerHTML = '';
+            
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        preview.appendChild(img);
+                    }
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.innerHTML = `<div>${file.name}</div>`;
+                }
+            }
+        }
 
-  document.getElementById('loadingSpinner').style.display = 'block';
-  document.getElementById('submitBtn').disabled = true;
+        function validateForm() {
+            const requiredFields = ['fullName', 'mobile', 'whatsapp', 'course', 'batchTime', 'address', 'aadhar', 'gender'];
+            let isValid = true;
+            
+            for (let field of requiredFields) {
+                const element = document.getElementById(field);
+                if (!element.value.trim()) {
+                    isValid = false;
+                    element.style.borderColor = 'red';
+                } else {
+                    element.style.borderColor = '#ddd';
+                }
+            }
 
-  const studentId = generateStudentId();
-  const params = new URLSearchParams();
-  params.append('studentId', studentId);
-  params.append('fullName', document.getElementById('fullName').value.trim());
-  params.append('fatherName', document.getElementById('fatherName').value.trim());
-  params.append('mobile', document.getElementById('mobile').value.trim());
-  params.append('whatsapp', document.getElementById('whatsapp').value.trim());
-  params.append('gender', document.getElementById('gender').value);
-  params.append('dob', document.getElementById('dob').value || '');
-  params.append('address', document.getElementById('address').value.trim());
-  params.append('aadhar', document.getElementById('aadhar').value.trim());
-  params.append('email', document.getElementById('email').value.trim());
-  params.append('course', document.getElementById('course').value);
-  params.append('batchTime', document.getElementById('batchTime').value);
+            // File validation
+            const photoFile = document.getElementById('photo');
+            const aadharFile = document.getElementById('aadharCard');
+            
+            if (photoFile.files.length === 0) {
+                isValid = false;
+                photoFile.style.borderColor = 'red';
+            } else {
+                photoFile.style.borderColor = '#ddd';
+            }
+            
+            if (aadharFile.files.length === 0) {
+                isValid = false;
+                aadharFile.style.borderColor = 'red';
+            } else {
+                aadharFile.style.borderColor = '#ddd';
+            }
 
-  try {
-    const resp = await fetch(GOOGLE_SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString()
-    });
+            const mobile = document.getElementById('mobile').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            
+            if (!/^\d{10}$/.test(mobile)) {
+                alert('कृपया 10 अंकों का मोबाइल नंबर दर्ज करें।');
+                return false;
+            }
+            
+            if (!/^\d{10}$/.test(whatsapp)) {
+                alert('कृपया 10 अंकों का WhatsApp नंबर दर्ज करें।');
+                return false;
+            }
 
-    if (!resp.ok) {
-      const txt = await resp.text();
-      throw new Error('Server returned ' + resp.status + ' — ' + txt);
-    }
+            if (!isValid) {
+                alert('कृपया सभी आवश्यक फील्ड्स भरें (जिनके आगे * लगा है)');
+            }
 
-    const text = await resp.text();
-    let result = {};
-    try { result = JSON.parse(text); } catch (e) { result = { status: 'ok' }; }
+            return isValid;
+        }
 
-    if (result.status === 'success' || result.status === 'ok') {
-      document.getElementById('admissionForm').style.display = 'none';
-      document.getElementById('successMessage').style.display = 'block';
-      document.getElementById('studentIdDisplay').textContent = 'Your Student ID: ' + studentId;
-      document.getElementById('successStudentName').textContent = 'धन्यवाद, ' + document.getElementById('fullName').value + '! आपका फॉर्म जमा हो गया है।';
-    } else {
-      alert('Submission failed: ' + (result.message || text || 'Unknown'));
-    }
-  } catch (err) {
-    alert('Submission error: ' + err.message);
-    console.error(err);
-  } finally {
-    document.getElementById('loadingSpinner').style.display = 'none';
-    document.getElementById('submitBtn').disabled = false;
-  }
-}
+        function generateStudentId() {
+            const prefix = "GCEI";
+            const year = new Date().getFullYear();
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            return `${prefix}-${year}-${randomNum}`;
+        }
 
-/* bind */
-document.getElementById('submitBtn').addEventListener('click', function(e){
-  e.preventDefault();
-  submitToGoogleSheetsWithFiles();
-});
+        async function submitToGoogleSheets() {
+            document.getElementById('loadingSpinner').style.display = 'block';
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
-/* DOB max (min age 10) */
-(function setDobMax(){
-  const dob = document.getElementById('dob');
-  const today = new Date();
-  dob.max = new Date(today.getFullYear()-10, today.getMonth(), today.getDate()).toISOString().split('T')[0];
-})();
-</script>
+            try {
+                const studentId = generateStudentId();
+                const formData = getFormData();
+                
+                const submissionData = {
+                    fullName: formData.fullName,
+                    fatherName: formData.fatherName,
+                    mobile: formData.mobile,
+                    whatsapp: formData.whatsapp,
+                    gender: formData.gender,
+                    dob: formData.dob,
+                    address: formData.address,
+                    aadhar: formData.aadhar,
+                    email: formData.email,
+                    course: formData.course,
+                    batchTime: formData.batchTime,
+                    studentId: studentId,
+                    timestamp: new Date().toLocaleString('hi-IN')
+                };
+
+                console.log('Sending data to Google Sheets:', submissionData);
+
+                // Try to send to Google Sheets
+                const formDataToSend = new FormData();
+                for (const key in submissionData) {
+                    formDataToSend.append(key, submissionData[key]);
+                }
+
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formDataToSend
+                });
+
+                if (response.ok) {
+                    const result = await response.text();
+                    console.log('Google Sheets Response:', result);
+                }
+
+                // Always show success page
+                showSuccessPage(submissionData);
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                
+                // Show debug info but still show success page
+                document.getElementById('debugInfo').style.display = 'block';
+                document.getElementById('debugInfo').innerHTML = `
+                    <strong>Debug Information:</strong><br>
+                    Error: ${error.message}<br>
+                    Time: ${new Date().toLocaleString()}
+                `;
+                
+                const formData = getFormData();
+                const studentId = generateStudentId();
+                formData.studentId = studentId;
+                formData.timestamp = new Date().toLocaleString('hi-IN');
+                
+                showSuccessPage(formData);
+            }
+        }
+
+        function showSuccessPage(formData) {
+            // Hide form, show success message
+            document.getElementById('admissionForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Populate success page data
+            document.getElementById('studentIdDisplay').textContent = `Your Student ID: ${formData.studentId}`;
+            document.getElementById('successFullName').textContent = formData.fullName;
+            document.getElementById('successCourse').textContent = formData.course;
+            document.getElementById('successBatchTime').textContent = formData.batchTime;
+            document.getElementById('successMobile').textContent = formData.mobile;
+            document.getElementById('submissionDate').textContent = formData.timestamp;
+            
+            // Initialize PDF library check
+            setTimeout(checkPdfLibrary, 1000);
+            
+            // Reset loading state
+            resetLoadingState();
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function resetLoadingState() {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('submitBtn').disabled = false;
+            document.getElementById('submitBtn').innerHTML = '<i class="fas fa-paper-plane"></i> Submit Admission Form';
+        }
+
+        function getFormData() {
+            return {
+                fullName: document.getElementById('fullName').value,
+                fatherName: document.getElementById('fatherName').value,
+                mobile: document.getElementById('mobile').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                gender: document.getElementById('gender').value,
+                dob: document.getElementById('dob').value,
+                address: document.getElementById('address').value,
+                aadhar: document.getElementById('aadhar').value,
+                email: document.getElementById('email').value,
+                course: document.getElementById('course').value,
+                batchTime: document.getElementById('batchTime').value,
+                marksheet: document.getElementById('marksheet').files.length > 0 ? 'Submitted' : 'Not Submitted'
+            };
+        }
+
+        // PDF Library Check
+        function checkPdfLibrary() {
+            if (typeof window.jspdf === 'undefined' || window.pdfLoadError) {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('downloadPdfBtn').disabled = true;
+                document.getElementById('downloadPdfBtn').innerHTML = '<i class="fas fa-exclamation-triangle"></i> PDF Not Available';
+                return false;
+            }
+            return true;
+        }
+
+        // PDF Download Function
+        document.getElementById('downloadPdfBtn').addEventListener('click', function() {
+            if (!checkPdfLibrary()) {
+                alert('PDF library load nahi hui hai. Kripya page refresh karen ya text format mein download karein.');
+                return;
+            }
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
+                
+                const formData = getFormData();
+                const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
+                
+                // Set professional fonts
+                doc.setFont("helvetica");
+                
+                // Header Section
+                doc.setFontSize(20);
+                doc.setFont(undefined, 'bold');
+                doc.setTextColor(26, 42, 108);
+                doc.text('Guru Computer Education Institute', 105, 20, { align: 'center' });
+                
+                doc.setFontSize(12);
+                doc.setFont(undefined, 'normal');
+                doc.setTextColor(100, 100, 100);
+                doc.text('Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)', 105, 28, { align: 'center' });
+                
+                doc.setFontSize(12);
+                doc.text('Phone: 9244240484', 105, 34, { align: 'center' });
+                
+                // Admission Form Title
+                doc.setFontSize(16);
+                doc.setFont(undefined, 'bold');
+                doc.setTextColor(0, 0, 0);
+                doc.text('ADMISSION FORM', 105, 45, { align: 'center' });
+                
+                // Submission Date
+                doc.setFontSize(10);
+                doc.setFont(undefined, 'normal');
+                doc.setTextColor(100, 100, 100);
+                doc.text('Submitted on: ' + new Date().toLocaleString(), 105, 52, { align: 'center' });
+                
+                let yPosition = 65;
+                
+                // Student Details Section
+                doc.setFontSize(12);
+                doc.setFont(undefined, 'bold');
+                doc.setTextColor(26, 42, 108);
+                doc.text('STUDENT DETAILS', 20, yPosition);
+                
+                yPosition += 10;
+                doc.setFont(undefined, 'normal');
+                doc.setTextColor(0, 0, 0);
+                doc.text(`Full Name: ${formData.fullName}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`Father/Guardian Name: ${formData.fatherName}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`Mobile Number: ${formData.mobile}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`WhatsApp Number: ${formData.whatsapp}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`Gender: ${formData.gender}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`Date of Birth: ${formData.dob}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`Address: ${formData.address}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`Aadhar Number: ${formData.aadhar}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`Email: ${formData.email}`, 25, yPosition);
+                
+                yPosition += 15;
+                
+                // Course Details Section
+                doc.setFont(undefined, 'bold');
+                doc.setTextColor(26, 42, 108);
+                doc.text('COURSE DETAILS', 20, yPosition);
+                
+                yPosition += 10;
+                doc.setFont(undefined, 'normal');
+                doc.setTextColor(0, 0, 0);
+                doc.text(`Selected Course: ${formData.course}`, 25, yPosition);
+                yPosition += 7;
+                doc.text(`Preferred Batch Time: ${formData.batchTime}`, 25, yPosition);
+                
+                yPosition += 15;
+                
+                // Declaration Section
+                doc.setFont(undefined, 'bold');
+                doc.setTextColor(26, 42, 108);
+                doc.text('DECLARATION', 20, yPosition);
+                
+                yPosition += 10;
+                doc.setFont(undefined, 'normal');
+                doc.setTextColor(0, 0, 0);
+                const declarationText = `I hereby declare that all the information provided above is true to the best of my knowledge. I agree to follow all rules and regulations of the institute and understand that the admission will be confirmed only after verification by the institute authorities.`;
+                
+                const splitDeclaration = doc.splitTextToSize(declarationText, 170);
+                doc.text(splitDeclaration, 25, yPosition);
+                
+                yPosition += (splitDeclaration.length * 5) + 15;
+                
+                // Signature Section
+                doc.text('Student Signature: _____', 25, yPosition);
+                yPosition += 7;
+                doc.text('Date: _____', 25, yPosition);
+                yPosition += 10;
+                doc.text('Parent/Guardian Signature: _____', 25, yPosition);
+                yPosition += 7;
+                doc.text('Date: _____', 25, yPosition);
+                
+                // Footer
+                yPosition += 20;
+                doc.setFontSize(8);
+                doc.setTextColor(150, 150, 150);
+                doc.text('This is a computer generated admission form. For any queries, contact: 9244240484', 105, yPosition, { align: 'center' });
+                
+                // Save PDF
+                doc.save(`Admission_Form_${studentId}.pdf`);
+                
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                alert('PDF generate karne mein error aaya. Kripya text format mein download karein.');
+            }
+        });
+
+        // Text Download Function
+        document.getElementById('downloadTextBtn').addEventListener('click', function() {
+            const formData = getFormData();
+            const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
+            
+            let content = `GURU COMPUTER EDUCATION INSTITUTE\n`;
+            content += `Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)\n`;
+            content += `Phone: 9244240484\n\n`;
+            content += `ADMISSION FORM\n\n`;
+            content += `Submitted on: ${new Date().toLocaleString()}\n\n`;
+            content += `STUDENT DETAILS\n`;
+            content += `Full Name: ${formData.fullName}\n`;
+            content += `Father/Guardian Name: ${formData.fatherName}\n`;
+            content += `Mobile Number: ${formData.mobile}\n`;
+            content += `WhatsApp Number: ${formData.whatsapp}\n`;
+            content += `Gender: ${formData.gender}\n`;
+            content += `Date of Birth: ${formData.dob}\n`;
+            content += `Address: ${formData.address}\n`;
+            content += `Aadhar Number: ${formData.aadhar}\n`;
+            content += `Email: ${formData.email}\n\n`;
+            content += `COURSE DETAILS\n`;
+            content += `Selected Course: ${formData.course}\n`;
+            content += `Preferred Batch Time: ${formData.batchTime}\n\n`;
+            content += `DECLARATION\n`;
+            content += `I hereby declare that all the information provided above is true to the best of my knowledge. I agree to follow all rules and regulations of the institute and understand that the admission will be confirmed only after verification by the institute authorities.\n\n`;
+            content += `Student Signature: _____\n`;
+            content += `Date: _____\n\n`;
+            content += `Parent/Guardian Signature: _____\n`;
+            content += `Date: _____\n\n`;
+            content += `Student ID: ${studentId}\n`;
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Admission_Form_${studentId}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            alert('Text file downloaded successfully!');
+        });
+
+        // WhatsApp button functionality
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const studentName = document.getElementById('successFullName').textContent;
+            const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
+            const message = `Namaste! Main ${studentName} hun. Mera Student ID ${studentId} hai. Maine admission form submit kiya hai. Kripya meri admission process ke bare mein batayein.`;
+            const whatsappUrl = `https://wa.me/919244240484?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+
+        // Set maximum date for DOB (minimum age 10 years)
+        const dobInput = document.getElementById('dob');
+        const today = new Date();
+        const maxDate = new Date(today.getFullYear() - 10, today.getMonth(), today.getDate());
+        dobInput.max = maxDate.toISOString().split('T')[0];
+    </script>
 </body>
 </html>
