@@ -18,358 +18,47 @@
             --accent: #d4af37;
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-            color: #333;
-            padding: 20px;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        header {
-            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
-            color: var(--white);
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .institute-name {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .address, .contact {
-            font-size: 14px;
-            margin: 3px 0;
-            opacity: 0.9;
-        }
-
-        .welcome-message {
-            background: var(--light-blue);
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 25px;
-            text-align: center;
-            border-left: 4px solid var(--secondary-blue);
-        }
-
-        .form-container {
-            padding: 20px;
-        }
-
-        .form-section {
-            margin-bottom: 25px;
-            padding: 15px;
-            border-radius: 10px;
-            background: var(--gray);
-            border-left: 5px solid var(--secondary-blue);
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--secondary-blue);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-title i {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -8px;
-        }
-
-        .form-group {
-            flex: 1 0 280px;
-            padding: 0 8px;
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-            color: var(--dark-gray);
-            font-size: 14px;
-        }
-
-        .required::after {
-            content: " *";
-            color: red;
-        }
-
-        input[type="text"], input[type="date"], input[type="email"], input[type="tel"], input[type="number"], textarea, select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 2px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            border-color: var(--secondary-blue);
-            outline: none;
-        }
-
-        .file-upload {
-            border: 2px dashed #ccc;
-            padding: 15px;
-            text-align: center;
-            border-radius: 6px;
-            background: #f8f9fa;
-            cursor: pointer;
-        }
-
-        .file-upload:hover {
-            border-color: var(--secondary-blue);
-        }
-
-        .submit-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: var(--success);
-            color: var(--white);
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            background: #0a6e3d;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 40px 30px;
-        }
-
-        .success-icon {
-            font-size: 80px;
-            color: var(--success);
-            margin-bottom: 20px;
-            animation: bounce 1s ease-in-out;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
-
-        .success-message h2 {
-            color: var(--success);
-            margin-bottom: 15px;
-            font-size: 32px;
-        }
-
-        .success-message p {
-            font-size: 18px;
-            margin-bottom: 12px;
-            color: var(--dark-gray);
-        }
-
-        .student-id {
-            background: #ecfdf5;
-            color: #065f46;
-            padding: 15px 25px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 20px;
-            margin: 25px 0;
-            display: inline-block;
-            border: 2px solid #a7f3d0;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .student-info {
-            background: var(--light-blue);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: left;
-            border-left: 4px solid var(--secondary-blue);
-        }
-
-        .info-row {
-            display: flex;
-            margin-bottom: 10px;
-            padding: 8px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: var(--primary-blue);
-            width: 150px;
-            flex-shrink: 0;
-        }
-
-        .info-value {
-            color: var(--dark-gray);
-            flex: 1;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .action-btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .download-btn {
-            background: var(--secondary-blue);
-            color: white;
-        }
-
-        .whatsapp-btn {
-            background: var(--whatsapp);
-            color: white;
-        }
-
-        .new-form-btn {
-            background: var(--success);
-            color: white;
-        }
-
-        .footer-note {
-            text-align: center;
-            margin-top: 25px;
-            padding: 20px;
-            background: var(--light-blue);
-            border-radius: 8px;
-            font-weight: 600;
-            color: var(--secondary-blue);
-        }
-
-        .tagline {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--accent);
-            margin: 8px 0;
-            font-style: italic;
-        }
-
-        .next-steps {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            text-align: left;
-        }
-
-        .spinner {
-            display: none;
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: var(--secondary-blue);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 15px auto;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .file-preview {
-            margin-top: 8px;
-            text-align: center;
-        }
-
-        .file-preview img {
-            max-width: 100px;
-            max-height: 100px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .form-group {
-                flex: 1 0 100%;
-            }
-            
-            .form-row {
-                margin: 0;
-            }
-            
-            .action-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .action-btn {
-                width: 100%;
-                max-width: 250px;
-                justify-content: center;
-            }
-            
-            .institute-name {
-                font-size: 20px;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%); color: #333; padding: 20px; min-height: 100vh; line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        header { background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue)); color: var(--white); padding: 20px; text-align: center; }
+        .institute-name { font-size: 24px; font-weight: 700; margin-bottom: 5px; }
+        .address, .contact { font-size: 14px; margin: 3px 0; opacity: 0.9; }
+        .welcome-message { background: var(--light-blue); padding: 15px; border-radius: 8px; margin: 15px 25px; text-align: center; border-left: 4px solid var(--secondary-blue); }
+        .form-container { padding: 20px; }
+        .form-section { margin-bottom: 25px; padding: 15px; border-radius: 10px; background: var(--gray); border-left: 5px solid var(--secondary-blue); }
+        .section-title { font-size: 18px; font-weight: 600; color: var(--secondary-blue); margin-bottom: 15px; display: flex; align-items: center; }
+        .form-row { display: flex; flex-wrap: wrap; margin: 0 -8px; }
+        .form-group { flex: 1 0 280px; padding: 0 8px; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--dark-gray); font-size: 14px; }
+        .required::after { content: " *"; color: red; }
+        input[type="text"], input[type="date"], input[type="email"], input[type="tel"], input[type="number"], textarea, select { width: 100%; padding: 10px 12px; border: 2px solid #ddd; border-radius: 6px; font-size: 14px; }
+        input:focus, textarea:focus, select:focus { border-color: var(--secondary-blue); outline: none; }
+        .file-upload { border: 2px dashed #ccc; padding: 15px; text-align: center; border-radius: 6px; background: #f8f9fa; cursor: pointer; }
+        .submit-btn { display: block; width: 100%; padding: 12px; background: var(--success); color: var(--white); border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 15px; transition: all 0.3s ease; }
+        .submit-btn:hover { background: #0a6e3d; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .submit-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; box-shadow: none; }
+        .success-message { display: none; text-align: center; padding: 40px 30px; }
+        .success-icon { font-size: 80px; color: var(--success); margin-bottom: 20px; animation: bounce 1s ease-in-out; }
+        @keyframes bounce { 0%,20%,50%,80%,100%{transform:translateY(0);}40%{transform:translateY(-20px);}60%{transform:translateY(-10px);} }
+        .student-id { background: #ecfdf5; color: #065f46; padding: 15px 25px; border-radius: 10px; font-weight: 700; font-size: 20px; margin: 25px 0; display: inline-block; border: 2px solid #a7f3d0; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .student-info { background: var(--light-blue); padding: 20px; border-radius: 10px; margin: 20px 0; text-align: left; border-left: 4px solid var(--secondary-blue); }
+        .info-row { display:flex; margin-bottom:10px; padding:8px 0; border-bottom:1px solid #e2e8f0; }
+        .info-label { font-weight:600; color:var(--primary-blue); width:150px; flex-shrink:0; }
+        .info-value { color:var(--dark-gray); flex:1; }
+        .action-buttons { display:flex; gap:15px; justify-content:center; margin:30px 0; flex-wrap:wrap; }
+        .action-btn { padding:12px 25px; border:none; border-radius:8px; font-size:16px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px; text-decoration:none; transition:all 0.3s ease; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+        .download-btn { background: var(--secondary-blue); color: white; }
+        .whatsapp-btn { background: var(--whatsapp); color: white; }
+        .new-form-btn { background: var(--success); color: white; }
+        .footer-note { text-align:center; margin-top:25px; padding:20px; background:var(--light-blue); border-radius:8px; font-weight:600; color:var(--secondary-blue); }
+        .tagline { font-size:16px; font-weight:600; color:var(--accent); margin:8px 0; font-style:italic; }
+        .next-steps { background:#fff3cd; border:1px solid #ffeaa7; border-radius:8px; padding:20px; margin:20px 0; text-align:left; }
+        .spinner { display:none; border:4px solid rgba(0,0,0,0.1); border-left-color:var(--secondary-blue); border-radius:50%; width:30px; height:30px; animation:spin 1s linear infinite; margin:15px auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .file-preview { margin-top:8px; text-align:center; }
+        .file-preview img { max-width:100px; max-height:100px; border:1px solid #ddd; border-radius:4px; margin:2px; }
+        @media (max-width:768px) { .form-group { flex:1 0 100%; } .action-buttons { flex-direction:column; align-items:center; } .action-btn { width:100%; max-width:250px; justify-content:center; } .institute-name { font-size:20px; } }
     </style>
 </head>
 <body>
@@ -380,41 +69,37 @@
             <div class="contact">Phone: 9244240484</div>
         </header>
 
-        <!-- Welcome Message -->
         <div class="welcome-message hindi-text">
             <p><strong>Namaste! Main Vani Hoon, Guru Computer Education Institute, Bilha mein aapka swagat hai.</strong></p>
             <p>Kripya admission form bhar kar submit karen. Form verify hone par hum aapko jald hi contact karenge.</p>
         </div>
 
         <div class="form-container" id="admissionForm">
-            <!-- Student Details Section -->
+            <!-- Student Details -->
             <div class="form-section">
                 <div class="section-title"><i class="fas fa-user-graduate"></i> Student Details</div>
-                
                 <div class="form-row">
                     <div class="form-group">
                         <label for="fullName" class="required">Full Name</label>
                         <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="fatherName">Father / Guardian Name</label>
                         <input type="text" id="fatherName" name="fatherName" placeholder="Enter father/guardian name">
                     </div>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="mobile" class="required">Mobile Number</label>
                         <input type="tel" id="mobile" name="mobile" placeholder="Enter 10-digit mobile number" pattern="[0-9]{10}" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="whatsapp" class="required">WhatsApp Number</label>
                         <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number" pattern="[0-9]{10}" required>
                     </div>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="gender" class="required">Gender</label>
@@ -425,24 +110,22 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
-                    
                     <div class="form-group">
                         <label for="dob">Date of Birth</label>
                         <input type="date" id="dob" name="dob">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="address" class="required">Address</label>
                     <textarea id="address" name="address" rows="2" placeholder="Enter your complete address" required></textarea>
                 </div>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="aadhar" class="required">Aadhar Number</label>
                         <input type="number" id="aadhar" name="aadhar" placeholder="Enter Aadhar number" required>
                     </div>
-                    
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Enter email address">
@@ -450,10 +133,9 @@
                 </div>
             </div>
 
-            <!-- Course Details Section -->
+            <!-- Course Details -->
             <div class="form-section">
                 <div class="section-title"><i class="fas fa-laptop-code"></i> Course Details</div>
-                
                 <div class="form-row">
                     <div class="form-group">
                         <label for="course" class="required">Select Course</label>
@@ -472,7 +154,6 @@
                             <option value="AI Course – How to Use ChatGPT Effectively">AI Course – How to Use ChatGPT Effectively</option>
                         </select>
                     </div>
-                    
                     <div class="form-group">
                         <label for="batchTime" class="required">Preferred Batch Time</label>
                         <select id="batchTime" name="batchTime" required>
@@ -488,24 +169,21 @@
                 </div>
             </div>
 
-            <!-- Documents Section -->
+            <!-- Documents -->
             <div class="form-section">
                 <div class="section-title"><i class="fas fa-file-alt"></i> Required Documents</div>
-                
                 <div class="form-row">
                     <div class="form-group">
                         <label for="photo" class="required">Passport Size Photo</label>
                         <input type="file" id="photo" name="photo" class="file-upload" accept="image/*" required>
                         <div class="file-preview" id="photoPreview"></div>
                     </div>
-                    
                     <div class="form-group">
                         <label for="aadharCard" class="required">Aadhar Card</label>
                         <input type="file" id="aadharCard" name="aadharCard" class="file-upload" accept="image/*,.pdf" required>
                         <div class="file-preview" id="aadharPreview"></div>
                     </div>
                 </div>
-                
                 <div class="form-row">
                     <div class="form-group">
                         <label for="marksheet">Marksheet (Last Passing Year) - Optional</label>
@@ -515,9 +193,7 @@
                 </div>
             </div>
 
-            <div class="footer-note">
-                Guru Ke Saath Gyan, Safalta Ki Pehchan - Your Journey to Success Starts Here!
-            </div>
+            <div class="footer-note">Guru Ke Saath Gyan, Safalta Ki Pehchan - Your Journey to Success Starts Here!</div>
 
             <div class="spinner" id="loadingSpinner"></div>
             <button type="submit" class="submit-btn" id="submitBtn">
@@ -531,33 +207,16 @@
             <h2>Form Submitted Successfully!</h2>
             <p id="successStudentName">धन्यवाद! आपका फॉर्म सफलतापूर्वक जमा हो गया है।</p>
             <p>हमारी टीम जल्द ही आपसे संपर्क करेगी।</p>
-            
-            <div class="student-id" id="studentIdDisplay">
-                Your Student ID: Loading...
-            </div>
+
+            <div class="student-id" id="studentIdDisplay">Your Student ID: Loading...</div>
 
             <div class="student-info">
                 <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 15px;">Student Information</h3>
-                <div class="info-row">
-                    <div class="info-label">Full Name:</div>
-                    <div class="info-value" id="displayFullName"></div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Course:</div>
-                    <div class="info-value" id="displayCourse"></div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Batch Time:</div>
-                    <div class="info-value" id="displayBatchTime"></div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Mobile:</div>
-                    <div class="info-value" id="displayMobile"></div>
-                </div>
-                <div class="info-row">
-                    <div class="info-label">Submission Date:</div>
-                    <div class="info-value" id="displaySubmissionDate"></div>
-                </div>
+                <div class="info-row"><div class="info-label">Full Name:</div><div class="info-value" id="displayFullName"></div></div>
+                <div class="info-row"><div class="info-label">Course:</div><div class="info-value" id="displayCourse"></div></div>
+                <div class="info-row"><div class="info-label">Batch Time:</div><div class="info-value" id="displayBatchTime"></div></div>
+                <div class="info-row"><div class="info-label">Mobile:</div><div class="info-value" id="displayMobile"></div></div>
+                <div class="info-row"><div class="info-label">Submission Date:</div><div class="info-value" id="displaySubmissionDate"></div></div>
             </div>
 
             <div class="next-steps">
@@ -569,17 +228,11 @@
                     <li>बैच शुरू होने की तिथि की पुष्टि</li>
                 </ul>
             </div>
-            
+
             <div class="action-buttons">
-                <button class="action-btn download-btn" id="downloadTextBtn">
-                    <i class="fas fa-file-text"></i> Download Form Copy
-                </button>
-                <button class="action-btn whatsapp-btn" id="whatsappBtn">
-                    <i class="fab fa-whatsapp"></i> Contact on WhatsApp
-                </button>
-                <button class="action-btn new-form-btn" id="newFormBtn">
-                    <i class="fas fa-plus"></i> New Admission Form
-                </button>
+                <button class="action-btn download-btn" id="downloadTextBtn"><i class="fas fa-file-text"></i> Download Form Copy</button>
+                <button class="action-btn whatsapp-btn" id="whatsappBtn"><i class="fab fa-whatsapp"></i> Contact on WhatsApp</button>
+                <button class="action-btn new-form-btn" id="newFormBtn"><i class="fas fa-plus"></i> New Admission Form</button>
             </div>
 
             <div class="footer-note">
@@ -592,35 +245,20 @@
 
     <script>
         // ✅ GOOGLE SCRIPT URL - Updated with working URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw-1sclvnvKukHgx8d8Eh8D-9FcLj5jiFVoOus9rOnGeV0AeKLc-hzOxRd8dk5QzUeg/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydjb6_q7wd_Q7WO7MTeJJrMc5jMB9ZSie836L9gdxR3C-W9mT3PLiFhpyJTCmulfp-/exec';
 
+        // submit handler -> call new function that handles files
         document.getElementById('submitBtn').addEventListener('click', async function(e) {
             e.preventDefault();
-            
-            if (!validateForm()) {
-                return;
-            }
-
-            await submitToGoogleSheets();
+            await submitToGoogleSheetsWithFiles();
         });
 
         // File preview functionality
-        document.getElementById('photo').addEventListener('change', function(e) {
-            previewFile(e.target, 'photoPreview');
-        });
+        document.getElementById('photo').addEventListener('change', function(e) { previewFile(e.target, 'photoPreview'); });
+        document.getElementById('aadharCard').addEventListener('change', function(e) { previewFile(e.target, 'aadharPreview'); });
+        document.getElementById('marksheet').addEventListener('change', function(e) { previewFile(e.target, 'marksheetPreview'); });
 
-        document.getElementById('aadharCard').addEventListener('change', function(e) {
-            previewFile(e.target, 'aadharPreview');
-        });
-
-        document.getElementById('marksheet').addEventListener('change', function(e) {
-            previewFile(e.target, 'marksheetPreview');
-        });
-
-        document.getElementById('downloadTextBtn').addEventListener('click', function() {
-            downloadFormCopy();
-        });
-
+        document.getElementById('downloadTextBtn').addEventListener('click', function() { downloadFormCopy(); });
         document.getElementById('whatsappBtn').addEventListener('click', function() {
             const studentName = document.getElementById('fullName').value;
             const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
@@ -628,25 +266,16 @@
             const whatsappUrl = `https://wa.me/919244240484?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         });
-
-        document.getElementById('newFormBtn').addEventListener('click', function() {
-            if(confirm('क्या आप एक नया एडमिशन फॉर्म भरना चाहते हैं?')) {
-                location.reload();
-            }
-        });
+        document.getElementById('newFormBtn').addEventListener('click', function() { if(confirm('क्या आप एक नया एडमिशन फॉर्म भरना चाहते हैं?')) location.reload(); });
 
         function previewFile(input, previewId) {
-            const preview = document.getElementById(previewId);
-            preview.innerHTML = '';
-            
+            const preview = document.getElementById(previewId); preview.innerHTML = '';
             if (input.files && input.files[0]) {
                 const file = input.files[0];
                 if (file.type.startsWith('image/')) {
                     const reader = new FileReader();
                     reader.onload = function(e) {
-                        const img = document.createElement('img');
-                        img.src = e.target.result;
-                        preview.appendChild(img);
+                        const img = document.createElement('img'); img.src = e.target.result; preview.appendChild(img);
                     }
                     reader.readAsDataURL(file);
                 } else {
@@ -656,163 +285,110 @@
         }
 
         function validateForm() {
-            const requiredFields = ['fullName', 'mobile', 'whatsapp', 'course', 'batchTime', 'address', 'aadhar', 'gender'];
+            const requiredFields = ['fullName','mobile','whatsapp','course','batchTime','address','aadhar','gender'];
             let isValid = true;
-            
             for (let field of requiredFields) {
                 const element = document.getElementById(field);
-                if (!element.value.trim()) {
-                    isValid = false;
-                    element.style.borderColor = 'red';
-                } else {
-                    element.style.borderColor = '#ddd';
-                }
+                if (!element.value.trim()) { isValid = false; element.style.borderColor = 'red'; } else { element.style.borderColor = '#ddd'; }
             }
-
-            // File validation
-            const photoFile = document.getElementById('photo');
-            const aadharFile = document.getElementById('aadharCard');
-            
-            if (photoFile.files.length === 0) {
-                isValid = false;
-                photoFile.style.borderColor = 'red';
-            } else {
-                photoFile.style.borderColor = '#ddd';
-            }
-            
-            if (aadharFile.files.length === 0) {
-                isValid = false;
-                aadharFile.style.borderColor = 'red';
-            } else {
-                aadharFile.style.borderColor = '#ddd';
-            }
+            const photoFile = document.getElementById('photo'); const aadharFile = document.getElementById('aadharCard');
+            if (photoFile.files.length === 0) { isValid = false; photoFile.style.borderColor = 'red'; } else { photoFile.style.borderColor = '#ddd'; }
+            if (aadharFile.files.length === 0) { isValid = false; aadharFile.style.borderColor = 'red'; } else { aadharFile.style.borderColor = '#ddd'; }
 
             const mobile = document.getElementById('mobile').value;
             const whatsapp = document.getElementById('whatsapp').value;
-            
-            if (!/^\d{10}$/.test(mobile)) {
-                alert('कृपया 10 अंकों का मोबाइल नंबर दर्ज करें।');
-                return false;
-            }
-            
-            if (!/^\d{10}$/.test(whatsapp)) {
-                alert('कृपया 10 अंकों का WhatsApp नंबर दर्ज करें।');
-                return false;
-            }
-
-            if (!isValid) {
-                alert('कृपया सभी आवश्यक फील्ड्स भरें (जिनके आगे * लगा है)');
-            }
-
+            if (!/^\d{10}$/.test(mobile)) { alert('कृपया 10 अंकों का मोबाइल नंबर दर्ज करें।'); return false; }
+            if (!/^\d{10}$/.test(whatsapp)) { alert('कृपया 10 अंकों का WhatsApp नंबर दर्ज करें।'); return false; }
+            if (!isValid) { alert('कृपया सभी आवश्यक फील्ड्स भरें (जिनके आगे * लगा है)'); }
             return isValid;
         }
 
         function generateStudentId() {
-            const prefix = "GCEI";
-            const year = new Date().getFullYear();
-            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const prefix = "GCEI"; const year = new Date().getFullYear(); const randomNum = Math.floor(1000 + Math.random() * 9000);
             return `${prefix}-${year}-${randomNum}`;
         }
 
-        async function submitToGoogleSheets() {
+        // NEW: submit function that reads files and posts JSON to Apps Script (doPost)
+        async function submitToGoogleSheetsWithFiles() {
+            if (!validateForm()) return;
+
             document.getElementById('loadingSpinner').style.display = 'block';
             document.getElementById('submitBtn').disabled = true;
             document.getElementById('submitBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
+            const studentId = generateStudentId();
+            const payload = {
+                fullName: document.getElementById('fullName').value.trim(),
+                fatherName: document.getElementById('fatherName').value.trim(),
+                mobile: document.getElementById('mobile').value.trim(),
+                whatsapp: document.getElementById('whatsapp').value.trim(),
+                gender: document.getElementById('gender').value,
+                dob: document.getElementById('dob').value,
+                address: document.getElementById('address').value.trim(),
+                aadhar: document.getElementById('aadhar').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                course: document.getElementById('course').value,
+                batchTime: document.getElementById('batchTime').value,
+                studentId: studentId,
+                files: []
+            };
+
+            function fileToDataURL(file, fieldName) {
+                return new Promise((resolve, reject) => {
+                    if (!file) return resolve(null);
+                    const reader = new FileReader();
+                    reader.onload = () => resolve({ field: fieldName, filename: file.name, mimeType: file.type, data: reader.result });
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            const photoFile = document.getElementById('photo').files[0];
+            const aadharFile = document.getElementById('aadharCard').files[0];
+            const marksheetFile = document.getElementById('marksheet').files[0];
+
+            if (photoFile) { const p = await fileToDataURL(photoFile, 'photo'); if (p) payload.files.push(p); }
+            if (aadharFile) { const a = await fileToDataURL(aadharFile, 'aadhar'); if (a) payload.files.push(a); }
+            if (marksheetFile) { const m = await fileToDataURL(marksheetFile, 'marksheet'); if (m) payload.files.push(m); }
+
             try {
-                const studentId = generateStudentId();
-                
-                const formData = {
-                    fullName: document.getElementById('fullName').value.trim(),
-                    fatherName: document.getElementById('fatherName').value.trim(),
-                    mobile: document.getElementById('mobile').value.trim(),
-                    whatsapp: document.getElementById('whatsapp').value.trim(),
-                    gender: document.getElementById('gender').value,
-                    dob: document.getElementById('dob').value,
-                    address: document.getElementById('address').value.trim(),
-                    aadhar: document.getElementById('aadhar').value.trim(),
-                    email: document.getElementById('email').value.trim(),
-                    course: document.getElementById('course').value,
-                    batchTime: document.getElementById('batchTime').value,
-                    studentId: studentId,
-                    timestamp: new Date().toLocaleString('hi-IN')
-                };
-
-                console.log('Sending data to Google Sheets:', formData);
-
-                // ✅ FIXED: Google Sheets में Data Submit करें - FormData का उपयोग करें
-                const formDataToSend = new FormData();
-                for (const key in formData) {
-                    formDataToSend.append(key, formData[key]);
-                }
-
-                // ✅ FIXED: GET request के साथ try करें
-                const queryParams = new URLSearchParams();
-                for (const key in formData) {
-                    queryParams.append(key, formData[key]);
-                }
-
-                // Method 1: GET request (अधिक reliable)
-                const getUrl = `${GOOGLE_SCRIPT_URL}?${queryParams.toString()}`;
-                
-                fetch(getUrl, {
-                    method: 'GET',
-                    mode: 'no-cors'
-                }).then(() => {
-                    console.log('Data sent via GET method');
-                    showSuccessMessage(formData);
-                }).catch(error => {
-                    console.log('GET method failed, trying POST...');
-                    // Method 2: POST request
-                    return fetch(GOOGLE_SCRIPT_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: queryParams.toString()
-                    });
-                }).then(() => {
-                    showSuccessMessage(formData);
-                }).catch(error => {
-                    console.log('Both methods failed, but showing success to user');
-                    showSuccessMessage(formData);
+                const resp = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
                 });
 
-            } catch (error) {
-                console.error('Submission error:', error);
-                // Still show success for better user experience
-                const studentId = generateStudentId();
-                const formData = getFormData();
-                formData.studentId = studentId;
-                showSuccessMessage(formData);
+                const result = await resp.json();
+                if (result.status === 'success') {
+                    if (result.fileLinks) {
+                        payload.photoLink = result.fileLinks.photo || '';
+                        payload.aadharLink = result.fileLinks.aadhar || '';
+                        payload.marksheetLink = result.fileLinks.marksheet || '';
+                    }
+                    showSuccessMessage(payload);
+                } else {
+                    alert('Submission failed: ' + (result.message || 'Unknown error'));
+                    resetLoadingState();
+                }
+            } catch (err) {
+                alert('Submission error: ' + err.toString());
+                resetLoadingState();
             }
         }
 
         function showSuccessMessage(formData) {
             document.getElementById('admissionForm').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
-            
-            // Student Information Display करें
             document.getElementById('studentIdDisplay').textContent = `Your Student ID: ${formData.studentId}`;
             document.getElementById('displayFullName').textContent = formData.fullName;
             document.getElementById('displayCourse').textContent = formData.course;
             document.getElementById('displayBatchTime').textContent = formData.batchTime;
             document.getElementById('displayMobile').textContent = formData.mobile;
             document.getElementById('displaySubmissionDate').textContent = new Date().toLocaleString('hi-IN');
-            
-            const studentName = formData.fullName;
-            document.getElementById('successStudentName').textContent = `धन्यवाद, ${studentName}! आपका फॉर्म सफलतापूर्वक जमा हो गया है।`;
-            
+            document.getElementById('successStudentName').textContent = `धन्यवाद, ${formData.fullName}! आपका फॉर्म सफलतापूर्वक जमा हो गया है।`;
             window.scrollTo(0, 0);
             resetLoadingState();
-            
-            // Console में confirmation दिखाएं
-            console.log('✅ Form submitted successfully!');
-            console.log('📧 Student ID:', formData.studentId);
-            console.log('👤 Student Name:', formData.fullName);
-            console.log('📚 Course:', formData.course);
-            console.log('⏰ Batch Time:', formData.batchTime);
+            console.log('✅ Form submitted successfully!', formData);
         }
 
         function resetLoadingState() {
@@ -824,45 +400,10 @@
         function downloadFormCopy() {
             const formData = getFormData();
             const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
-            
-            let content = `GURU COMPUTER EDUCATION INSTITUTE\n`;
-            content += `Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)\n`;
-            content += `Phone: 9244240484\n\n`;
-            content += `ADMISSION FORM\n\n`;
-            content += `Student ID: ${studentId}\n\n`;
-            content += `STUDENT DETAILS\n`;
-            content += `Full Name: ${formData.fullName}\n`;
-            content += `Father/Guardian Name: ${formData.fatherName || 'N/A'}\n`;
-            content += `Mobile Number: ${formData.mobile}\n`;
-            content += `WhatsApp Number: ${formData.whatsapp}\n`;
-            content += `Gender: ${formData.gender}\n`;
-            content += `Date of Birth: ${formData.dob || 'N/A'}\n`;
-            content += `Address: ${formData.address}\n`;
-            content += `Aadhar Number: ${formData.aadhar}\n`;
-            content += `Email: ${formData.email || 'N/A'}\n\n`;
-            content += `COURSE DETAILS\n`;
-            content += `Selected Course: ${formData.course}\n`;
-            content += `Preferred Batch Time: ${formData.batchTime}\n\n`;
-            content += `DOCUMENTS SUBMITTED\n`;
-            content += `Passport Photo: Submitted\n`;
-            content += `Aadhar Card: Submitted\n`;
-            content += `Marksheet: ${formData.marksheet}\n\n`;
-            content += `Submitted on: ${new Date().toLocaleString('hi-IN')}\n\n`;
-            content += `DECLARATION\n`;
-            content += `I hereby declare that all the information provided above is true to the best of my knowledge.\n\n`;
-            content += `Student Signature: __________\n\n`;
-            content += `Parent/Guardian Signature: __________\n\n`;
-            content += `For any queries, contact: 9244240484 (Vani)`;
-
+            let content = `GURU COMPUTER EDUCATION INSTITUTE\nNear Police Station, Dagori Road, Bilha, Bilaspur (C.G.)\nPhone: 9244240484\n\nADMISSION FORM\n\nStudent ID: ${studentId}\n\nSTUDENT DETAILS\nFull Name: ${formData.fullName}\nFather/Guardian Name: ${formData.fatherName || 'N/A'}\nMobile Number: ${formData.mobile}\nWhatsApp Number: ${formData.whatsapp}\nGender: ${formData.gender}\nDate of Birth: ${formData.dob || 'N/A'}\nAddress: ${formData.address}\nAadhar Number: ${formData.aadhar}\nEmail: ${formData.email || 'N/A'}\n\nCOURSE DETAILS\nSelected Course: ${formData.course}\nPreferred Batch Time: ${formData.batchTime}\n\nDOCUMENTS SUBMITTED\nPassport Photo: Submitted\nAadhar Card: Submitted\nMarksheet: ${formData.marksheet}\n\nSubmitted on: ${new Date().toLocaleString('hi-IN')}\n\nDECLARATION\nI hereby declare that all the information provided above is true to the best of my knowledge.\n\nStudent Signature: __________\n\nParent/Guardian Signature: __________\n\nFor any queries, contact: 9244240484 (Vani)`;
             const blob = new Blob([content], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Admission_Form_${studentId}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            const a = document.createElement('a'); a.href = url; a.download = `Admission_Form_${studentId}.txt`; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
         }
 
         function getFormData() {
@@ -881,7 +422,7 @@
                 marksheet: document.getElementById('marksheet').files.length > 0 ? 'Submitted' : 'Not Submitted'
             };
         }
-        
+
         // Set maximum date for DOB (minimum age 10 years)
         const dobInput = document.getElementById('dob');
         const today = new Date();
@@ -893,12 +434,9 @@
             const successIcon = document.querySelector('.success-icon');
             if (successIcon) {
                 successIcon.style.transform = 'scale(1.1)';
-                setTimeout(() => {
-                    successIcon.style.transform = 'scale(1)';
-                }, 300);
+                setTimeout(() => { successIcon.style.transform = 'scale(1)'; }, 300);
             }
         }, 1000);
     </script>
 </body>
-
 </html>
