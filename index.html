@@ -659,10 +659,7 @@
 
     <script>
         // ✅ TESTED GOOGLE SCRIPT URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJxPFaodx8JIdQyS8oniRWu4Vc8i_B7wWFgCbK0vFHYIz9wqnKBNm5pG5mnQPS3xo0/exec';
-
-        // Student ID counter - starting from 2301
-        let studentIdCounter = 2301;
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIi5zXt0honds4e0euAx_yR7XqpQivlWvLU1my4VWiJxe1Z5UwMvnVIzUvGLEGAQWm/exec';
 
         // Show status message
         function showStatus(message, type) {
@@ -776,10 +773,9 @@
         function generateStudentId() {
             const prefix = "GCEI";
             const year = new Date().getFullYear();
-            // Generate sequential ID starting from 2301
-            const studentId = `${prefix}-${year}-${studentIdCounter}`;
-            studentIdCounter++; // Increment for next student
-            return studentId;
+            // Generate timestamp-based ID to avoid conflicts
+            const timestamp = Date.now().toString().slice(-4);
+            return `${prefix}-${year}-${timestamp}`;
         }
 
         async function submitToGoogleSheets() {
