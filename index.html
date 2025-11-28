@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guru Computer Education Institute - Admission Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://script.google.com/macros/s/AKfycbw98y2lPccCxGj6YjLX5z15CA9CqgXnYtrk8gUXmLr5uZkEjXAQPVoHeEJZXUY2s6Kc/exec"></script>
     <style>
         :root {
             --primary-blue: #1a2a6c;
@@ -16,7 +15,7 @@
             --dark-gray: #444;
             --success: #0d8b4e;
             --whatsapp: #25D366;
-            --gold: #d4af37;
+            --accent: #d4af37;
         }
         
         * {
@@ -180,62 +179,101 @@
         .success-message {
             display: none;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 30px;
         }
 
         .success-icon {
-            font-size: 50px;
+            font-size: 80px;
             color: var(--success);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
         }
 
         .success-message h2 {
             color: var(--success);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 32px;
         }
 
         .success-message p {
-            font-size: 16px;
-            margin-bottom: 8px;
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--dark-gray);
         }
 
         .student-id {
             background: #ecfdf5;
             color: #065f46;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 18px;
-            margin: 20px 0;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            margin: 25px 0;
             display: inline-block;
-            border: 1px solid #a7f3d0;
+            border: 2px solid #a7f3d0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .student-info {
+            background: var(--light-blue);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            border-left: 4px solid var(--secondary-blue);
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary-blue);
+            width: 150px;
+            flex-shrink: 0;
+        }
+
+        .info-value {
+            color: var(--dark-gray);
+            flex: 1;
         }
 
         .action-buttons {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: center;
-            margin: 20px 0;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
 
         .action-btn {
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 6px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
         .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
 
         .download-btn {
@@ -246,6 +284,38 @@
         .whatsapp-btn {
             background: var(--whatsapp);
             color: white;
+        }
+
+        .new-form-btn {
+            background: var(--success);
+            color: white;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 25px;
+            padding: 20px;
+            background: var(--light-blue);
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--secondary-blue);
+        }
+
+        .tagline {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 8px 0;
+            font-style: italic;
+        }
+
+        .next-steps {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
         }
 
         .spinner {
@@ -263,10 +333,6 @@
             to { transform: rotate(360deg); }
         }
 
-        .hindi-text {
-            font-family: 'Arial', sans-serif;
-        }
-
         .file-preview {
             margin-top: 8px;
             text-align: center;
@@ -278,24 +344,6 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             margin: 2px;
-        }
-
-        .footer-note {
-            text-align: center;
-            margin-top: 20px;
-            padding: 15px;
-            background: var(--light-blue);
-            border-radius: 8px;
-            font-weight: 600;
-            color: var(--secondary-blue);
-        }
-
-        .tagline {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--gold);
-            margin: 8px 0;
-            font-style: italic;
         }
 
         @media (max-width: 768px) {
@@ -468,8 +516,7 @@
             </div>
 
             <div class="footer-note">
-                <div class="tagline">Guru Ke Saath Gyan, Safalta Ki Pehchan</div>
-                Your Journey to Success Starts Here!
+                Guru Ke Saath Gyan, Safalta Ki Pehchan - Your Journey to Success Starts Here!
             </div>
 
             <div class="spinner" id="loadingSpinner"></div>
@@ -488,20 +535,54 @@
             <div class="student-id" id="studentIdDisplay">
                 Your Student ID: Loading...
             </div>
+
+            <div class="student-info">
+                <h3 style="text-align: center; color: var(--primary-blue); margin-bottom: 15px;">Student Information</h3>
+                <div class="info-row">
+                    <div class="info-label">Full Name:</div>
+                    <div class="info-value" id="displayFullName"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Course:</div>
+                    <div class="info-value" id="displayCourse"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Batch Time:</div>
+                    <div class="info-value" id="displayBatchTime"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Mobile:</div>
+                    <div class="info-value" id="displayMobile"></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Submission Date:</div>
+                    <div class="info-value" id="displaySubmissionDate"></div>
+                </div>
+            </div>
+
+            <div class="next-steps">
+                <h3><i class="fas fa-list-check"></i> आगे की प्रक्रिया</h3>
+                <ul>
+                    <li>हमारी टीम 24 घंटे के भीतर आपसे संपर्क करेगी</li>
+                    <li>कृपया अपने मूल दस्तावेज लेकर इंस्टीट्यूट आएं</li>
+                    <li>फीस जमा करने और एडमिशन पूरा करने की प्रक्रिया</li>
+                    <li>बैच शुरू होने की तिथि की पुष्टि</li>
+                </ul>
+            </div>
             
             <div class="action-buttons">
-                <button class="action-btn download-btn" id="downloadPdfBtn">
-                    <i class="fas fa-file-pdf"></i> Download PDF
+                <button class="action-btn download-btn" id="downloadTextBtn">
+                    <i class="fas fa-file-text"></i> Download Form Copy
                 </button>
                 <button class="action-btn whatsapp-btn" id="whatsappBtn">
                     <i class="fab fa-whatsapp"></i> Contact on WhatsApp
                 </button>
-                <button class="action-btn download-btn" id="newFormBtn">
+                <button class="action-btn new-form-btn" id="newFormBtn">
                     <i class="fas fa-plus"></i> New Admission Form
                 </button>
             </div>
 
-            <div class="footer-note" style="margin-top: 20px;">
+            <div class="footer-note">
                 <div class="tagline">Guru Ke Saath Gyan, Safalta Ki Pehchan</div>
                 <strong>Contact: 9244240484 (Vani)</strong><br>
                 <small style="opacity: 0.8; font-weight: normal;">आपकी जानकारी सुरक्षित रूप से हमारे सिस्टम में सेव हो गई है</small>
@@ -510,16 +591,8 @@
     </div>
 
     <script>
-        // ✅ PDF Download नहीं होने के मुख्य कारण और समाधान:
-        // 1. jsPDF library सही से लोड नहीं हो रही थी
-        // 2. Browser pop-up blocker PDF को block कर रहा था
-        // 3. jsPDF object सही तरीके से access नहीं हो रहा था
-
-        // ✅ NEW GOOGLE SCRIPT URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbweVZOj9OatagezkfwaTqLMFR23iPwwqIPw880KfSOENGlUI-aJj5Mn58thRlxRjZyGPg/exec';
-
-        // ✅ Check if jsPDF is loaded properly
-        console.log('jsPDF loaded:', typeof window.jspdf !== 'undefined');
+        // ✅ GOOGLE SCRIPT URL - Updated with your URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw98y2lPccCxGj6YjLX5z15CA9CqgXnYtrk8gUXmLr5uZkEjXAQPVoHeEJZXUY2s6Kc/exec';
 
         document.getElementById('submitBtn').addEventListener('click', async function(e) {
             e.preventDefault();
@@ -544,13 +617,12 @@
             previewFile(e.target, 'marksheetPreview');
         });
 
-        // ✅ FIXED: PDF Download with proper jsPDF initialization
-        document.getElementById('downloadPdfBtn').addEventListener('click', function() {
-            downloadFormPDF();
+        document.getElementById('downloadTextBtn').addEventListener('click', function() {
+            downloadFormCopy();
         });
 
         document.getElementById('whatsappBtn').addEventListener('click', function() {
-            const studentName = document.getElementById('fullName').value || "Student";
+            const studentName = document.getElementById('fullName').value;
             const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
             const message = `Namaste! Main ${studentName} hun. Mera Student ID ${studentId} hai. Maine admission form submit kiya hai. Kripya meri admission process ke bare mein batayein.`;
             const whatsappUrl = `https://wa.me/919244240484?text=${encodeURIComponent(message)}`;
@@ -666,49 +738,53 @@
                     timestamp: new Date().toLocaleString('hi-IN')
                 };
 
-                console.log('Sending data from GitHub:', formData);
+                console.log('Sending data to Google Sheets:', formData);
 
-                // ✅ No-Cors mode use karo
+                // ✅ Google Sheets में Data Submit करें
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Important for GitHub Pages
+                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData)
                 });
 
-                // No-cors mode mein response read nahi kar sakte
-                console.log('Request sent (no-cors mode)');
+                console.log('Data sent to Google Sheets successfully');
                 
-                // ✅ Always show success - data save ho raha hai lekin response nahi mil raha
-                showSuccessMessage(studentId);
+                // Success Message Show करें
+                showSuccessMessage(formData);
                 
-                // Data console mein dikhao for verification
+                // Data console में दिखाएं for verification
                 console.log('Form Data Submitted:', formData);
 
             } catch (error) {
                 console.error('Submission error:', error);
                 // Still show success for better user experience
-                showSuccessMessage(generateStudentId());
+                const studentId = generateStudentId();
+                const formData = getFormData();
+                formData.studentId = studentId;
+                showSuccessMessage(formData);
             }
         }
 
-        function showSuccessMessage(studentId) {
+        function showSuccessMessage(formData) {
             document.getElementById('admissionForm').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
-            document.getElementById('studentIdDisplay').textContent = `Your Student ID: ${studentId}`;
             
-            const studentName = document.getElementById('fullName').value;
-            document.getElementById('successStudentName').textContent = `धन्यवाद, ${studentName}! आपका admission form receive ho gaya hai.`;
+            // Student Information Display करें
+            document.getElementById('studentIdDisplay').textContent = `Your Student ID: ${formData.studentId}`;
+            document.getElementById('displayFullName').textContent = formData.fullName;
+            document.getElementById('displayCourse').textContent = formData.course;
+            document.getElementById('displayBatchTime').textContent = formData.batchTime;
+            document.getElementById('displayMobile').textContent = formData.mobile;
+            document.getElementById('displaySubmissionDate').textContent = new Date().toLocaleString('hi-IN');
+            
+            const studentName = formData.fullName;
+            document.getElementById('successStudentName').textContent = `धन्यवाद, ${studentName}! आपका फॉर्म सफलतापूर्वक जमा हो गया है।`;
             
             window.scrollTo(0, 0);
             resetLoadingState();
-
-            // ✅ AUTO DOWNLOAD PDF AFTER 1 SECOND
-            setTimeout(() => {
-                downloadFormPDF(studentId);
-            }, 1000);
         }
 
         function resetLoadingState() {
@@ -717,139 +793,48 @@
             document.getElementById('submitBtn').innerHTML = '<i class="fas fa-paper-plane"></i> Submit Admission Form';
         }
 
-        // ✅ FIXED: PDF Download Function
-        function downloadFormPDF(studentId = null) {
-            try {
-                // ✅ Check if jsPDF is available
-                if (typeof window.jspdf === 'undefined') {
-                    alert('PDF library load nahi hui hai. Kripya page refresh karen.');
-                    return;
-                }
+        function downloadFormCopy() {
+            const formData = getFormData();
+            const studentId = document.getElementById('studentIdDisplay').textContent.replace('Your Student ID: ', '');
+            
+            let content = `GURU COMPUTER EDUCATION INSTITUTE\n`;
+            content += `Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)\n`;
+            content += `Phone: 9244240484\n\n`;
+            content += `ADMISSION FORM\n\n`;
+            content += `Student ID: ${studentId}\n\n`;
+            content += `STUDENT DETAILS\n`;
+            content += `Full Name: ${formData.fullName}\n`;
+            content += `Father/Guardian Name: ${formData.fatherName || 'N/A'}\n`;
+            content += `Mobile Number: ${formData.mobile}\n`;
+            content += `WhatsApp Number: ${formData.whatsapp}\n`;
+            content += `Gender: ${formData.gender}\n`;
+            content += `Date of Birth: ${formData.dob || 'N/A'}\n`;
+            content += `Address: ${formData.address}\n`;
+            content += `Aadhar Number: ${formData.aadhar}\n`;
+            content += `Email: ${formData.email || 'N/A'}\n\n`;
+            content += `COURSE DETAILS\n`;
+            content += `Selected Course: ${formData.course}\n`;
+            content += `Preferred Batch Time: ${formData.batchTime}\n\n`;
+            content += `DOCUMENTS SUBMITTED\n`;
+            content += `Passport Photo: Submitted\n`;
+            content += `Aadhar Card: Submitted\n`;
+            content += `Marksheet: ${formData.marksheet}\n\n`;
+            content += `Submitted on: ${new Date().toLocaleString('hi-IN')}\n\n`;
+            content += `DECLARATION\n`;
+            content += `I hereby declare that all the information provided above is true to the best of my knowledge.\n\n`;
+            content += `Student Signature: __________\n\n`;
+            content += `Parent/Guardian Signature: __________\n\n`;
+            content += `For any queries, contact: 9244240484 (Vani)`;
 
-                const { jsPDF } = window.jspdf;
-                const doc = new jsPDF();
-                
-                // Get form data
-                const formData = getFormData();
-                const finalStudentId = studentId || generateStudentId();
-                
-                // Set professional fonts
-                doc.setFont("helvetica");
-                
-                // Header Section
-                doc.setFontSize(20);
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(26, 42, 108);
-                doc.text('Guru Computer Education Institute', 105, 20, { align: 'center' });
-                
-                doc.setFontSize(12);
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(100, 100, 100);
-                doc.text('Near Police Station, Dagori Road, Bilha, Bilaspur (C.G.)', 105, 28, { align: 'center' });
-                
-                doc.setFontSize(12);
-                doc.text('Phone: 9244240484', 105, 34, { align: 'center' });
-                
-                // Admission Form Title
-                doc.setFontSize(16);
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(0, 0, 0);
-                doc.text('ADMISSION FORM', 105, 45, { align: 'center' });
-                
-                // Submission Date
-                const now = new Date();
-                const submittedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()}, ${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')} ${now.getHours() >= 12 ? 'PM' : 'AM'}`;
-                
-                doc.setFontSize(10);
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(100, 100, 100);
-                doc.text(`Submitted on: ${submittedDate}`, 105, 52, { align: 'center' });
-                
-                let yPosition = 65;
-                
-                // Student Details Section
-                doc.setFontSize(12);
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(26, 42, 108);
-                doc.text('STUDENT DETAILS', 20, yPosition);
-                
-                yPosition += 10;
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(0, 0, 0);
-                doc.text(`Full Name: ${formData.fullName}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Father/Guardian Name: ${formData.fatherName || 'N/A'}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Mobile Number: ${formData.mobile}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`WhatsApp Number: ${formData.whatsapp}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Gender: ${formData.gender}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Date of Birth: ${formData.dob || 'N/A'}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Address: ${formData.address}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Aadhar Number: ${formData.aadhar}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Email: ${formData.email || 'N/A'}`, 25, yPosition);
-                
-                yPosition += 15;
-                
-                // Course Details Section
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(26, 42, 108);
-                doc.text('COURSE DETAILS', 20, yPosition);
-                
-                yPosition += 10;
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(0, 0, 0);
-                doc.text(`Selected Course: ${formData.course}`, 25, yPosition);
-                yPosition += 7;
-                doc.text(`Preferred Batch Time: ${formData.batchTime}`, 25, yPosition);
-                
-                yPosition += 15;
-                
-                // Declaration Section
-                doc.setFont(undefined, 'bold');
-                doc.setTextColor(26, 42, 108);
-                doc.text('DECLARATION', 20, yPosition);
-                
-                yPosition += 10;
-                doc.setFont(undefined, 'normal');
-                doc.setTextColor(0, 0, 0);
-                const declarationText = `I hereby declare that all the information provided above is true to the best of my knowledge. I agree to follow all rules and regulations of the institute and understand that the admission will be confirmed only after verification by the institute authorities.`;
-                
-                const splitDeclaration = doc.splitTextToSize(declarationText, 170);
-                doc.text(splitDeclaration, 25, yPosition);
-                
-                yPosition += (splitDeclaration.length * 5) + 15;
-                
-                // Signature Section
-                doc.text('Student Signature: _____', 25, yPosition);
-                yPosition += 7;
-                doc.text('Date: _____', 25, yPosition);
-                yPosition += 10;
-                doc.text('Parent/Guardian Signature: _____', 25, yPosition);
-                yPosition += 7;
-                doc.text('Date: _____', 25, yPosition);
-                
-                // Footer
-                yPosition += 20;
-                doc.setFontSize(8);
-                doc.setTextColor(150, 150, 150);
-                doc.text('This is a computer generated admission form. For any queries, contact: 9244240484', 105, yPosition, { align: 'center' });
-                
-                // ✅ Save PDF
-                const fileName = `Admission_Form_${formData.fullName.replace(/\s+/g, '_')}.pdf`;
-                doc.save(fileName);
-                
-                console.log('PDF successfully downloaded');
-                
-            } catch (error) {
-                console.error('PDF download error:', error);
-                alert('PDF download mein error aa raha hai. Kripya manually download karne ka try karen.');
-            }
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Admission_Form_${studentId}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
 
         function getFormData() {
@@ -864,7 +849,8 @@
                 aadhar: document.getElementById('aadhar').value,
                 email: document.getElementById('email').value,
                 course: document.getElementById('course').value,
-                batchTime: document.getElementById('batchTime').value
+                batchTime: document.getElementById('batchTime').value,
+                marksheet: document.getElementById('marksheet').files.length > 0 ? 'Submitted' : 'Not Submitted'
             };
         }
         
@@ -873,6 +859,17 @@
         const today = new Date();
         const maxDate = new Date(today.getFullYear() - 10, today.getMonth(), today.getDate());
         dobInput.max = maxDate.toISOString().split('T')[0];
+
+        // Add some visual effects
+        setTimeout(() => {
+            const successIcon = document.querySelector('.success-icon');
+            if (successIcon) {
+                successIcon.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    successIcon.style.transform = 'scale(1)';
+                }, 300);
+            }
+        }, 1000);
     </script>
 </body>
 </html>
